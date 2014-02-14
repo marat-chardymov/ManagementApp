@@ -4,12 +4,19 @@ import com.epam.model.entities.News;
 
 import javax.sql.DataSource;
 import java.sql.SQLException;
+import java.util.List;
 
 /**
  * Created by Marat_Chardymau on 2/13/14.
  */
 public interface INewsDAO {
-    public void setDataSource(DataSource ds);
-    public void save(News news) throws Exception;
+    public void save(News news);
 
+    public News read(int id);
+
+    void delete(News news);
+
+    void update(News news);
+
+    List<News> findAll();
 }
