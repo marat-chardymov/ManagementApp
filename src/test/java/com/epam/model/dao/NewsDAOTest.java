@@ -12,8 +12,9 @@ public class NewsDAOTest {
     @Test
     public void createTest() throws Exception {
         INewsDAO newsDAO = new NewsDAO();
-        News news = new News("test title", "test content", "test brief");
+        News news = new News("fdsa", "fdas", "fdsa");
         newsDAO.save(news);
+        System.out.println(news.getId());
         assertNotNull(news.getId());
     }
 

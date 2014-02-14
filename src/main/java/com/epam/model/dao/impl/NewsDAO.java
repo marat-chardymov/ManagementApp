@@ -20,21 +20,21 @@ public class NewsDAO extends AbstractDAO implements INewsDAO {
             String insertTableSQL = "INSERT INTO NEWS"
                     + "(content, title,brief) VALUES"
                     + "(?,?,?)";
-            preparedStatement = connection.prepareStatement(insertTableSQL, Statement.RETURN_GENERATED_KEYS);
+            preparedStatement = connection.prepareStatement(insertTableSQL, new String[]{"NEWS_ID"});
             preparedStatement.setString(1, news.getContent());
             preparedStatement.setString(2, news.getTitle());
             preparedStatement.setString(3, news.getBrief());
             //we are trying to get id of inserted record
-//            int affectedRows = preparedStatement.executeUpdate();
-//            if (affectedRows == 0) {
-//                throw new Exception("Creating answer failed, no rows affected.");
-//            }
-//            resultSet = preparedStatement.getGeneratedKeys();
-//            if (resultSet.next()) {
-//                news.setId(resultSet.getInt(1));
-//            } else {
-//                throw new Exception("Creating answer failed, no generated key obtained.");
-//            }
+            int affectedRows = preparedStatement.executeUpdate();
+            if (affectedRows == 0) {
+                throw new Exception("Creating answer failed, no rows affected.");
+            }
+            resultSet = preparedStatement.getGeneratedKeys();
+            if (null != resultSet && resultSet.next()) {
+                news.setId(resultSet.getInt(1));
+            } else {
+                throw new Exception("Creating answer failed, no generated key obtained.");
+            }
         } catch (SQLException e) {
             throw new Exception("add answer failed", e);
         } finally {
