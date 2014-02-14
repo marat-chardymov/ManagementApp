@@ -7,6 +7,9 @@
     <version>1.0-SNAPSHOT</version>
     <name>ManagementApp Maven Webapp</name>
     <url>http://maven.apache.org</url>
+    <properties>
+        <spring.version>4.0.0.RELEASE</spring.version>
+    </properties>
     <dependencies>
         <!-- junit testing framework -->
         <dependency>
@@ -41,6 +44,24 @@
             <artifactId>ojdbc6</artifactId>
             <version>11.2.0</version>
         </dependency>
+
+        <!-- Spring dependencies -->
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-core</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-context</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>org.springframework</groupId>
+            <artifactId>spring-jdbc</artifactId>
+            <version>${spring.version}</version>
+        </dependency>
+
 
     </dependencies>
     <build>

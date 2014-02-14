@@ -8,6 +8,9 @@ public class News extends AbstractEntity {
     private String brief;
     private Date date;
 
+    public News() {
+    }
+
     public News(String title, String brief, String content) {
         super();
         this.title = title;
