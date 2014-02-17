@@ -11,6 +11,9 @@
     </form-beans>
 
     <action-mappings>
+        <action path="/newsList" type="com.epam.action.NewsListAction">
+            <forward name="success" path="/newsList.jsp"/>
+        </action>
         <action path="/helloWorld"
                 type="com.epam.action.HelloWorldAction"
                 name="helloWorldForm">
@@ -18,7 +21,6 @@
 
         </action>
     </action-mappings>
-
 
 
 </struts-config>

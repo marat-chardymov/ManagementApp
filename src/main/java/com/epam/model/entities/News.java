@@ -6,7 +6,7 @@ public class News extends AbstractEntity {
     private String content;
     private String title;
     private String brief;
-    private Date date;
+    private Date createdAt;
 
     public News() {
     }
@@ -42,11 +42,11 @@ public class News extends AbstractEntity {
         this.brief = brief;
     }
 
-    public Date getDate() {
-        return date;
+    public Date getCreatedAt() {
+        return createdAt;
     }
 
-    public void setDate(Date date) {
-        this.date = date;
+    public void setCreatedAt(Date createdAt) {
+        this.createdAt = createdAt;
     }
 }

@@ -13,6 +13,7 @@ import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
 import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -21,7 +22,7 @@ public class JdbcNewsDAO extends JdbcDaoSupport implements INewsDAO {
     @Override
     public void save(final News news) {
         final String sql = "INSERT INTO NEWS"
-                + "(title,brief,content) VALUES"
+                + "(title,brief,content,created_at) VALUES"
                 + "(?,?,?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         getJdbcTemplate().update(
@@ -32,6 +33,7 @@ public class JdbcNewsDAO extends JdbcDaoSupport implements INewsDAO {
                         ps.setString(1, news.getTitle());
                         ps.setString(2, news.getBrief());
                         ps.setString(3, news.getContent());
+                        ps.setDate(4, new java.sql.Date(news.getCreatedAt().getTime()));
                         return ps;
                     }
                 },
@@ -65,10 +67,11 @@ public class JdbcNewsDAO extends JdbcDaoSupport implements INewsDAO {
         List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
         for (Map row : rows) {
             News news = new News();
-            news.setId(((BigDecimal)row.get("ID")).intValueExact());
+            news.setId(((BigDecimal) row.get("ID")).intValueExact());
             news.setTitle((String) row.get("title"));
             news.setBrief((String) row.get("brief"));
             news.setContent((String) row.get("content"));
+            news.setCreatedAt((Date)row.get("created_at"));
             newsList.add(news);
         }
         return newsList;
