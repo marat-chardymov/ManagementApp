@@ -8,6 +8,7 @@ import org.springframework.jdbc.core.support.JdbcDaoSupport;
 import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
+import java.math.BigDecimal;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.SQLException;
@@ -51,30 +52,25 @@ public class JdbcNewsDAO extends JdbcDaoSupport implements INewsDAO {
     }
 
     @Override
-    public List<News> findAll() {
-        String sql = "SELECT * FROM NEWS";
-
-        List<News> newsList = new ArrayList<News>();
-
-        List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
-        for (Map row : rows) {
-            News news = new News();
-            news.setId((int)(row.get("ID")));
-            news.setTitle((String)row.get("title"));
-            news.setBrief((String)row.get("brief"));
-            news.setContent((String)row.get("content"));
-            newsList.add(news);
-        }
-
-        return newsList;
-    }
-
-    @Override
     public void delete(News news) {
         int id = news.getId();
         String sql = "DELETE FROM news WHERE id=?";
         getJdbcTemplate().update(sql, id);
     }
 
-
+    @Override
+    public List<News> findAll() {
+        String sql = "SELECT * FROM NEWS";
+        List<News> newsList = new ArrayList<News>();
+        List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
+        for (Map row : rows) {
+            News news = new News();
+            news.setId(((BigDecimal)row.get("ID")).intValueExact());
+            news.setTitle((String) row.get("title"));
+            news.setBrief((String) row.get("brief"));
+            news.setContent((String) row.get("content"));
+            newsList.add(news);
+        }
+        return newsList;
+    }
 }
