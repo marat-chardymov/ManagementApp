@@ -43,16 +43,18 @@
                                         ${news.title}
                                 </h2>
                             <span class="date">
-                                    <fmt:formatDate value="${news.createdAt}" pattern="dd-MM-yyyy" />
+                                    <fmt:formatDate value="${news.createdAt}" pattern="dd-MM-yyyy"/>
                             </span>
 
                                 <p>
                                         ${news.brief}
                                 </p>
 
-                                <p>
-                                    <a class="btn" href="#">View details »</a>
-                                </p>
+                                <div class="RUDbuttons">
+                                    <a class="btn" href="#">View</a>
+                                    <a class="btn" href="#">Edit</a>
+                                    <input type="checkbox">
+                                </div>
                             </div>
                         </c:forEach>
                     </div>

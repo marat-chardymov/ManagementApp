@@ -5,22 +5,15 @@
 
 <struts-config>
 
-    <form-beans>
-        <form-bean name="helloWorldForm"
-                   type="com.epam.form.HelloWorldForm"/>
-    </form-beans>
-
     <action-mappings>
         <action path="/newsList" type="com.epam.action.NewsListAction">
             <forward name="success" path="/newsList.jsp"/>
         </action>
-        <action path="/helloWorld"
-                type="com.epam.action.HelloWorldAction"
-                name="helloWorldForm">
-            <forward name="success" path="/HelloWorld.jsp"/>
-
-        </action>
     </action-mappings>
 
-
+    <!-- Spring Struts plugin -->
+    <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
+        <set-property property="contextConfigLocation"
+                      value="/WEB-INF/application-context.xml"/>
+    </plug-in>
 </struts-config>

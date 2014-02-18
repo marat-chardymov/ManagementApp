@@ -1,7 +1,6 @@
 package com.epam.model.dao;
 
 
-import com.epam.model.dao.impl.JdbcNewsDAO;
 import com.epam.model.entities.News;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -21,7 +20,7 @@ public class NewsDAOTest {
 
     @BeforeClass
     public static void setUp() {
-        beanFactory = new ClassPathXmlApplicationContext("application-context.xml");
+        beanFactory = new ClassPathXmlApplicationContext("WEB-INF/application-context.xml");
     }
 
     @Test
