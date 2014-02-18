@@ -14,7 +14,7 @@ public interface INewsDAO {
 
     public News read(int id);
 
-    void delete(News news);
+    void delete(int id);
 
     void update(News news);
 

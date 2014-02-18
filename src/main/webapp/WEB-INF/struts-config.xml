@@ -5,9 +5,23 @@
 
 <struts-config>
 
+    <form-beans>
+        <form-bean name="dynaNewsDeleteForm"
+                   type="org.apache.struts.action.DynaActionForm">
+            <form-property name="selectedItems" type="java.lang.String[]"/>
+        </form-bean>
+
+    </form-beans>
+
     <action-mappings>
         <action path="/newsList" type="com.epam.action.NewsListAction">
             <forward name="success" path="/newsList.jsp"/>
+        </action>
+
+        <action path="/deleteNews"
+                type="com.epam.action.NewsDeleteAction"
+                name="dynaNewsDeleteForm">
+            <forward name="success" path="/newsList.do"/>
         </action>
     </action-mappings>
 

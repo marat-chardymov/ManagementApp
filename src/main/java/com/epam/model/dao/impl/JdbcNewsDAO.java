@@ -23,7 +23,7 @@ public class JdbcNewsDAO extends JdbcDaoSupport implements INewsDAO {
     public void save(final News news) {
         final String sql = "INSERT INTO NEWS"
                 + "(title,brief,content,created_at) VALUES"
-                + "(?,?,?)";
+                + "(?,?,?,?)";
         KeyHolder keyHolder = new GeneratedKeyHolder();
         getJdbcTemplate().update(
                 new PreparedStatementCreator() {
@@ -54,8 +54,7 @@ public class JdbcNewsDAO extends JdbcDaoSupport implements INewsDAO {
     }
 
     @Override
-    public void delete(News news) {
-        int id = news.getId();
+    public void delete(int id) {
         String sql = "DELETE FROM news WHERE id=?";
         getJdbcTemplate().update(sql, id);
     }

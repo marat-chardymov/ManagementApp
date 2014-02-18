@@ -37,26 +37,29 @@
                         </nav>
                     </div>
                     <div class="col-md-9 column">
-                        <c:forEach items="${newsList}" var="news">
-                            <div>
-                                <h2>
-                                        ${news.title}
-                                </h2>
+                        <html:form action="/deleteNews">
+                            <c:forEach items="${newsList}" var="news">
+                                <div>
+                                    <h2>
+                                            ${news.title}
+                                    </h2>
                             <span class="date">
                                     <fmt:formatDate value="${news.createdAt}" pattern="dd-MM-yyyy"/>
                             </span>
 
-                                <p>
-                                        ${news.brief}
-                                </p>
+                                    <p>
+                                            ${news.brief}
+                                    </p>
 
-                                <div class="RUDbuttons">
-                                    <a class="btn" href="#">View</a>
-                                    <a class="btn" href="#">Edit</a>
-                                    <input type="checkbox">
+                                    <div class="RUDbuttons">
+                                        <a class="btn" href="#">View</a>
+                                        <a class="btn" href="#">Edit</a>
+                                        <html:multibox property="selectedItems" value="${news.id}"/>
+                                    </div>
                                 </div>
-                            </div>
-                        </c:forEach>
+                            </c:forEach>
+                            <html:submit styleClass="btn btn-primary" value="delete"/>
+                        </html:form>
                     </div>
                 </div>
             </div>

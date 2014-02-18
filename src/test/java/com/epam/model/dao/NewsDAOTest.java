@@ -58,7 +58,7 @@ public class NewsDAOTest {
         INewsDAO newsDAO = (INewsDAO) beanFactory.getBean("newsDao");
         News news = new News("deleteTest", "deleteTest", "deleteTest");
         newsDAO.save(news);
-        newsDAO.delete(news);
+        newsDAO.delete(news.getId());
         newsDAO.read(news.getId());
 
     }
