@@ -1,15 +1,10 @@
-<%@taglib uri="http://struts.apache.org/tags-html" prefix="html" %>
-<%@taglib uri="http://struts.apache.org/tags-bean" prefix="bean" %>
-<%@taglib uri="http://struts.apache.org/tags-logic" prefix="logic" %>
-<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%@ taglib prefix="fmt" uri="http://java.sun.com/jsp/jstl/fmt" %>
-<%@ page language="java" contentType="text/html; charset=UTF-8"
-         pageEncoding="UTF-8" %>
+<%@ include file="includes/libs.jsp" %>
 <!DOCTYPE html>
 <html>
 <head>
     <title>Management App</title>
     <meta charset="utf-8">
+
     <link href="css/bootstrap.min.css" rel="stylesheet">
     <link href="css/newsList.css" rel="stylesheet">
 </head>
@@ -32,7 +27,7 @@
                         <nav>
                             <ul class="nav nav-pills nav-stacked span2">
                                 <li class="active"><a href="#">News List</a></li>
-                                <li><a href="#">Add news</a></li>
+                                <li><a href="addNews.jsp">Add news</a></li>
                             </ul>
                         </nav>
                     </div>

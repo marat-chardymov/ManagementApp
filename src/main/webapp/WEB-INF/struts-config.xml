@@ -28,6 +28,6 @@
     <!-- Spring Struts plugin -->
     <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
         <set-property property="contextConfigLocation"
-                      value="/WEB-INF/application-context.xml"/>
+                      value="WEB-INF/application-context.xml"/>
     </plug-in>
 </struts-config>
