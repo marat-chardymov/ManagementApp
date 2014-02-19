@@ -32,18 +32,18 @@
                         <nav>
                             <ul class="nav nav-pills nav-stacked span2">
                                 <li><a href="${pageContext.request.contextPath}/newsList.do">News List</a></li>
-                                <li class="active"><a href="addNews.jsp">Add news</a></li>
+                                <li class="active"><a href="addAndEditNews.jsp">Add news</a></li>
                             </ul>
                         </nav>
                     </div>
                     <div class="col-md-9 column">
-                        <html:form action="/addNews" styleClass="form-horizontal">
+                        <html:form action="/addNews?id=${param.id}" styleClass="form-horizontal">
                             <div class="form-group">
                                 <label for="title" class="col-sm-2 control-label">Title</label>
 
                                 <div class="col-sm-8">
                                     <html:text property="title" styleId="title"
-                                               styleClass="form-control"></html:text>
+                                               styleClass="form-control" value="${newsForm.title}"></html:text>
                                 </div>
                             </div>
                             <div class="form-group">
@@ -51,24 +51,21 @@
 
                                 <div class="col-sm-8">
                                     <html:text property="date" styleId="date"
-                                               styleClass="datepicker"></html:text>
-                                        <%--<input type="text" id="date" value="${date}" class="form-control">--%>
+                                               styleClass="datepicker" value="${newsForm.date}"></html:text>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="brief" class="col-sm-2 control-label">Brief</label>
 
                                 <div class="col-sm-8">
-                                    <html:textarea property="brief" styleId="brief" styleClass="form-control"/>
-                                        <%--<textarea class="form-control" id="brief" rows="3"></textarea>--%>
+                                    <html:textarea property="brief" styleId="brief" styleClass="form-control" value="${newsForm.brief}"/>
                                 </div>
                             </div>
                             <div class="form-group">
                                 <label for="content" class="col-sm-2 control-label">Content</label>
 
                                 <div class="col-sm-8">
-                                    <html:textarea property="content" styleId="content" styleClass="form-control"/>
-                                        <%--<textarea class="form-control" id="content" rows="3"></textarea>--%>
+                                    <html:textarea property="content" styleId="content" styleClass="form-control" value="${newsForm.content}"/>
                                 </div>
                             </div>
                             <div class="form-group">

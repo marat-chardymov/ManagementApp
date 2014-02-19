@@ -43,7 +43,7 @@ public class JdbcNewsDAO extends JdbcDaoSupport implements INewsDAO {
 
     @Override
     public News read(int id) {
-        String sql = "SELECT id,title,brief,content FROM news WHERE ID=?";
+        String sql = "SELECT id,title,brief,content,created_at FROM news WHERE ID=?";
         return (News) getJdbcTemplate().queryForObject(sql, new Object[]{id}, new BeanPropertyRowMapper(News.class));
     }
 
@@ -61,7 +61,7 @@ public class JdbcNewsDAO extends JdbcDaoSupport implements INewsDAO {
 
     @Override
     public List<News> findAll() {
-        String sql = "SELECT * FROM NEWS";
+        String sql = "SELECT * FROM NEWS ORDER BY created_at DESC";
         List<News> newsList = new ArrayList<News>();
         List<Map<String, Object>> rows = getJdbcTemplate().queryForList(sql);
         for (Map row : rows) {

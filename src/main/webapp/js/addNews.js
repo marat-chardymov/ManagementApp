@@ -1,1 +1,1 @@
-$('.datepicker').datepicker({format: 'dd/mm/yyyy'})
+$('.datepicker').datepicker({format: 'dd-mm-yyyy'})

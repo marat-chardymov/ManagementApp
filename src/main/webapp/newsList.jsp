@@ -27,7 +27,7 @@
                         <nav>
                             <ul class="nav nav-pills nav-stacked span2">
                                 <li class="active"><a href="#">News List</a></li>
-                                <li><a href="addNews.jsp">Add news</a></li>
+                                <li><a href="addAndEditNews.jsp">Add news</a></li>
                             </ul>
                         </nav>
                     </div>
@@ -48,7 +48,7 @@
 
                                     <div class="RUDbuttons">
                                         <a class="btn" href="#">View</a>
-                                        <a class="btn" href="#">Edit</a>
+                                        <html:link action="/editNews?id=${news.id}">Edit</html:link>
                                         <html:multibox property="selectedItems" value="${news.id}"/>
                                     </div>
                                 </div>

@@ -25,15 +25,16 @@
         </action>
 
         <action path="/addNews"
-                type="com.epam.action.AddNewsAction"
+                type="com.epam.action.SaveNewsAction"
                 name="newsForm" scope="request">
-            <forward name="success" path="/addNews.jsp"/>
+            <forward name="successAdd" path="/addAndEditNews.jsp"/>
+            <forward name="successEdit" path="/newsList.do"/>
         </action>
         <action path="/editNews"
-                type="com.epam.action.EditNewsAction"
-                name="newsForm" scope="request">
-            <forward name="success" path="/editNews.jsp"/>
-        </action>
+                         type="com.epam.action.EditNewsAction"
+                         name="newsForm" scope="request">
+        <forward name="success" path="/addAndEditNews.jsp"/>
+    </action>
     </action-mappings>
 
     <!-- Spring Struts plugin -->
