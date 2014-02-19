@@ -13,16 +13,16 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.text.ParseException;
 
-/**
- * Created by Marat_Chardymau on 2/19/14.
- */
-public class NewsDeleteAction extends ActionSupport {
+public class ViewNewsAction extends ActionSupport {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
                                  HttpServletRequest request, HttpServletResponse response) throws ParseException, IllegalAccessException {
 
         INewsDAO newsDAO = (INewsDAO) getWebApplicationContext().getBean("newsDAO");
         int id = Integer.parseInt(request.getParameter("id"));
-        newsDAO.delete(id);
+        News news = newsDAO.read(id);
+
+        NewsForm newsForm = (NewsForm) form;
+        NewsConverter.NewsToForm(newsForm, news);
         return mapping.findForward("success");
     }
 }

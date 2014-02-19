@@ -6,7 +6,7 @@
 <struts-config>
 
     <form-beans>
-        <form-bean name="dynaNewsDeleteForm"
+        <form-bean name="dynaNewsListDeleteForm"
                    type="org.apache.struts.action.DynaActionForm">
             <form-property name="selectedItems" type="java.lang.String[]"/>
         </form-bean>
@@ -18,12 +18,15 @@
             <forward name="success" path="/newsList.jsp"/>
         </action>
 
-        <action path="/deleteNews"
-                type="com.epam.action.NewsDeleteAction"
-                name="dynaNewsDeleteForm">
+        <action path="/deleteNewsList"
+                type="com.epam.action.NewsListDeleteAction"
+                name="dynaNewsListDeleteForm">
             <forward name="success" path="/newsList.do"/>
         </action>
-
+        <action path="/deleteNews"
+                type="com.epam.action.NewsDeleteAction">
+            <forward name="success" path="/newsList.do"/>
+        </action>
         <action path="/addNews"
                 type="com.epam.action.SaveNewsAction"
                 name="newsForm" scope="request">
@@ -31,10 +34,15 @@
             <forward name="successEdit" path="/newsList.do"/>
         </action>
         <action path="/editNews"
-                         type="com.epam.action.EditNewsAction"
-                         name="newsForm" scope="request">
-        <forward name="success" path="/addAndEditNews.jsp"/>
-    </action>
+                type="com.epam.action.EditNewsAction"
+                name="newsForm" scope="request">
+            <forward name="success" path="/addAndEditNews.jsp"/>
+        </action>
+        <action path="/viewNews"
+                type="com.epam.action.ViewNewsAction"
+                name="newsForm" scope="request">
+            <forward name="success" path="/viewNews.jsp"/>
+        </action>
     </action-mappings>
 
     <!-- Spring Struts plugin -->

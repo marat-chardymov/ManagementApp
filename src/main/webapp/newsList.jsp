@@ -32,7 +32,7 @@
                         </nav>
                     </div>
                     <div class="col-md-9 column">
-                        <html:form action="/deleteNews">
+                        <html:form action="/deleteNewsList">
                             <c:forEach items="${newsList}" var="news">
                                 <div>
                                     <h2>
@@ -41,13 +41,11 @@
                             <span class="date">
                                     <fmt:formatDate value="${news.createdAt}" pattern="dd-MM-yyyy"/>
                             </span>
-
                                     <p>
                                             ${news.brief}
                                     </p>
-
                                     <div class="RUDbuttons">
-                                        <a class="btn" href="#">View</a>
+                                        <html:link action="/viewNews?id=${news.id}">View</html:link>
                                         <html:link action="/editNews?id=${news.id}">Edit</html:link>
                                         <html:multibox property="selectedItems" value="${news.id}"/>
                                     </div>
