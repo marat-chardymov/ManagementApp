@@ -18,6 +18,14 @@ public class News extends AbstractEntity {
         this.content = content;
     }
 
+    public News(String title, String brief, String content, Date date) {
+        super();
+        this.title = title;
+        this.brief = brief;
+        this.content = content;
+        this.createdAt = date;
+    }
+
     public String getContent() {
         return content;
     }

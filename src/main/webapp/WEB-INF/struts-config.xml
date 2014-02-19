@@ -10,13 +10,7 @@
                    type="org.apache.struts.action.DynaActionForm">
             <form-property name="selectedItems" type="java.lang.String[]"/>
         </form-bean>
-        <form-bean name="dynaNewsForm"
-                   type="org.apache.struts.action.DynaActionForm">
-            <form-property name="title" type="java.lang.String"/>
-            <form-property name="date" type="java.lang.String"/>
-            <form-property name="brief" type="java.lang.String"/>
-            <form-property name="content" type="java.lang.String"/>
-        </form-bean>
+        <form-bean name="newsForm" type="com.epam.forms.NewsForm"/>
     </form-beans>
 
     <action-mappings>
@@ -32,8 +26,13 @@
 
         <action path="/addNews"
                 type="com.epam.action.AddNewsAction"
-                name="dynaNewsForm">
+                name="newsForm" scope="request">
             <forward name="success" path="/addNews.jsp"/>
+        </action>
+        <action path="/editNews"
+                type="com.epam.action.EditNewsAction"
+                name="newsForm" scope="request">
+            <forward name="success" path="/editNews.jsp"/>
         </action>
     </action-mappings>
 
