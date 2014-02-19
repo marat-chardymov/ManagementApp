@@ -5,7 +5,7 @@
     <title>Management App</title>
     <meta charset="utf-8">
 
-    <link href="css/bootstrap.min.css" rel="stylesheet">
+    <link href="css/lib/bootstrap.min.css" rel="stylesheet">
     <link href="css/newsList.css" rel="stylesheet">
 </head>
 <body>
