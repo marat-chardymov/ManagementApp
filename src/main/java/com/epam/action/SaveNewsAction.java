@@ -32,6 +32,7 @@ public class SaveNewsAction extends ActionSupport {
         Date date = dFormat.parse(strDate);
 
         News news = new News(title, brief, content, date);
+
         //if id exists we update current news, else - add new
         if (!request.getParameter("id").isEmpty()) {
             int id = Integer.parseInt(request.getParameter("id"));

@@ -49,8 +49,8 @@ public class JdbcNewsDAO extends JdbcDaoSupport implements INewsDAO {
 
     @Override
     public void update(News news) {
-        String sql = "UPDATE news SET title=?,brief=?,content=? WHERE id=?";
-        getJdbcTemplate().update(sql, news.getTitle(), news.getBrief(), news.getContent(), news.getId());
+        String sql = "UPDATE news SET title=?,brief=?,content=?,created_at=? WHERE id=?";
+        getJdbcTemplate().update(sql, news.getTitle(), news.getBrief(), news.getContent(), news.getCreatedAt(),news.getId());
     }
 
     @Override
