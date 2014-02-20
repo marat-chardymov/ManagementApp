@@ -1,4 +1,6 @@
 <%@ include file="includes/libs.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 <!DOCTYPE html>
 <html>
 <head>
@@ -61,7 +63,7 @@
 
     <div class="row">
         <div class="col-md-12 column">
-            © 1993-2014. EPAM Systems. All Rights Reserved.
+        © 1993-2014. EPAM Systems. All Rights Reserved.
         </div>
     </div>
 
