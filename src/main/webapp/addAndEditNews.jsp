@@ -72,7 +72,7 @@
                             </div>
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-6">
-                                    <html:submit styleClass="btn btn-primary" value="Save"/>
+                                    <html:submit styleClass="btn btn-primary"><bean:message key="buttons.save"/></html:submit>
                                     <a href="${pageContext.request.contextPath}/newsList.do" class="btn btn-default">Cancel</a>
                                 </div>
                             </div>

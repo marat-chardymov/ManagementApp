@@ -14,34 +14,38 @@
     </form-beans>
 
     <action-mappings>
-        <action path="/newsList" type="com.epam.action.NewsListAction">
+        <action path="/newsList" type="com.epam.action.news.NewsListAction">
             <forward name="success" path="/newsList.jsp"/>
         </action>
-
         <action path="/deleteNewsList"
-                type="com.epam.action.NewsListDeleteAction"
+                type="com.epam.action.news.NewsListDeleteAction"
                 name="dynaNewsListDeleteForm">
             <forward name="success" path="/newsList.do"/>
         </action>
         <action path="/deleteNews"
-                type="com.epam.action.NewsDeleteAction">
+                type="com.epam.action.news.NewsDeleteAction">
             <forward name="success" path="/newsList.do"/>
         </action>
         <action path="/addNews"
-                type="com.epam.action.SaveNewsAction"
+                type="com.epam.action.news.SaveNewsAction"
                 name="newsForm" scope="request" input="/addAndEditNews.jsp">
             <forward name="successAdd" path="/addAndEditNews.jsp"/>
             <forward name="successEdit" path="/newsList.do" />
         </action>
         <action path="/editNews"
-                type="com.epam.action.EditNewsAction"
+                type="com.epam.action.news.EditNewsAction"
                 name="newsForm" scope="request" input="/addAndEditNews.jsp" validate="false">
             <forward name="success" path="/addAndEditNews.jsp"/>
         </action>
         <action path="/viewNews"
-                type="com.epam.action.ViewNewsAction"
+                type="com.epam.action.news.ViewNewsAction"
                 name="newsForm" scope="request" input="/viewNews.jsp" validate="false">
             <forward name="success" path="/viewNews.jsp"/>
+        </action>
+        <action path="/locale"
+                type="com.epam.action.LanguageSelectAction"
+                parameter="method">
+            <forward name="success" path="/newsList.do"/>
         </action>
     </action-mappings>
 

@@ -1,27 +1,28 @@
-package com.epam.action;
+package com.epam.action.news;
 
+import com.epam.action.util.NewsConverter;
+import com.epam.forms.NewsForm;
 import com.epam.model.dao.INewsDAO;
 import com.epam.model.entities.News;
-import org.apache.struts.action.Action;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
-import org.springframework.beans.factory.BeanFactory;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 import org.springframework.web.struts.ActionSupport;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
-import java.util.List;
+import java.text.ParseException;
 
-
-public class NewsListAction extends ActionSupport {
+/**
+ * Created by Marat_Chardymau on 2/19/14.
+ */
+public class NewsDeleteAction extends ActionSupport {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
-                                 HttpServletRequest request, HttpServletResponse response) {
+                                 HttpServletRequest request, HttpServletResponse response) throws ParseException, IllegalAccessException {
 
         INewsDAO newsDAO = (INewsDAO) getWebApplicationContext().getBean("newsDAO");
-        List<News> newsList=newsDAO.findAll();
-        request.setAttribute("newsList", newsList);
+        int id = Integer.parseInt(request.getParameter("id"));
+        newsDAO.delete(id);
         return mapping.findForward("success");
     }
 }

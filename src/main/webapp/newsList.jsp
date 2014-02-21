@@ -16,7 +16,12 @@
         <div class="col-md-12 column">
             <div class="page-header">
                 <h1>
-                    News management
+                    News management <bean:message key="helloWorld" />
+                    <div class="locale">
+                        <h4><html:link page="/locale.do?method=english">English</html:link>
+                            <html:link page="/locale.do?method=russian">Russian</html:link>
+                        </h4>
+                    </div>
                 </h1>
             </div>
         </div>
@@ -43,9 +48,11 @@
                             <span class="date">
                                     <fmt:formatDate value="${news.createdAt}" pattern="dd-MM-yyyy"/>
                             </span>
+
                                     <p>
                                             ${news.brief}
                                     </p>
+
                                     <div class="RUDbuttons">
                                         <html:link action="/viewNews?id=${news.id}">View</html:link>
                                         <html:link action="/editNews?id=${news.id}">Edit</html:link>
@@ -53,7 +60,7 @@
                                     </div>
                                 </div>
                             </c:forEach>
-                            <html:submit styleClass="btn btn-primary" value="delete"/>
+                            <html:submit styleClass="btn btn-primary"><bean:message key="buttons.delete"/></html:submit>
                         </html:form>
                     </div>
                 </div>
@@ -63,7 +70,7 @@
 
     <div class="row">
         <div class="col-md-12 column">
-        © 1993-2014. EPAM Systems. All Rights Reserved.
+            © 1993-2014. EPAM Systems. All Rights Reserved.
         </div>
     </div>
 

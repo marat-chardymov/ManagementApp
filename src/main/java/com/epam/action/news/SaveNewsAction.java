@@ -1,4 +1,4 @@
-package com.epam.action;
+package com.epam.action.news;
 
 import com.epam.forms.NewsForm;
 import com.epam.model.dao.INewsDAO;
