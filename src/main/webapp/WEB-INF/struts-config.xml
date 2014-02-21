@@ -29,7 +29,7 @@
         <action path="/addNews"
                 type="com.epam.action.news.SaveNewsAction"
                 name="newsForm" scope="request" input="/addAndEditNews.jsp">
-            <forward name="successAdd" path="/addAndEditNews.jsp"/>
+            <forward name="successAdd" path="/newsList.do"/>
             <forward name="successEdit" path="/newsList.do" />
         </action>
         <action path="/editNews"
