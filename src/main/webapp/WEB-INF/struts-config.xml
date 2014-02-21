@@ -29,22 +29,31 @@
         </action>
         <action path="/addNews"
                 type="com.epam.action.SaveNewsAction"
-                name="newsForm" scope="request">
+                name="newsForm" scope="request" input="/addAndEditNews.jsp">
             <forward name="successAdd" path="/addAndEditNews.jsp"/>
-            <forward name="successEdit" path="/newsList.do"/>
+            <forward name="successEdit" path="/newsList.do" />
         </action>
         <action path="/editNews"
                 type="com.epam.action.EditNewsAction"
-                name="newsForm" scope="request">
+                name="newsForm" scope="request" input="/addAndEditNews.jsp" validate="false">
             <forward name="success" path="/addAndEditNews.jsp"/>
         </action>
         <action path="/viewNews"
                 type="com.epam.action.ViewNewsAction"
-                name="newsForm" scope="request">
+                name="newsForm" scope="request" input="/viewNews.jsp" validate="false">
             <forward name="success" path="/viewNews.jsp"/>
         </action>
     </action-mappings>
 
+
+    <message-resources
+            parameter="news" />
+    <!-- Validator plugin -->
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn" >
+        <set-property property="pathnames"
+                      value="/WEB-INF/validator-rules.xml, /WEB-INF/validator-news.xml"/>
+
+    </plug-in>
     <!-- Spring Struts plugin -->
     <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
         <set-property property="contextConfigLocation"

@@ -1,11 +1,13 @@
 package com.epam.forms;
 
+import org.apache.struts.action.ActionErrors;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionMapping;
+import org.apache.struts.validator.ValidatorForm;
 
 import javax.servlet.http.HttpServletRequest;
 
-public class NewsForm extends ActionForm {
+public class NewsForm extends ValidatorForm {
 
     private String title;
     private String date;
