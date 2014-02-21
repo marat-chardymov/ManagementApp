@@ -16,7 +16,7 @@
         <div class="col-md-12 column">
             <div class="page-header">
                 <h1>
-                    News management
+                    <bean:message key="header.title"/>
                 </h1>
             </div>
         </div>
@@ -28,14 +28,14 @@
                     <div class="col-md-3 column">
                         <nav>
                             <ul class="nav nav-pills nav-stacked span2">
-                                <li><a href="${pageContext.request.contextPath}/newsList.do">News List</a></li>
-                                <li><a href="addAndEditNews.jsp">Add news</a></li>
+                                <li><a href="${pageContext.request.contextPath}/newsList.do"><bean:message key="menu.newsList"/></a></li>
+                                <li><a href="addAndEditNews.jsp"><bean:message key="menu.addNews"/></a></li>
                             </ul>
                         </nav>
                     </div>
                     <div class="col-md-9 column " id="content">
                         <div class="row">
-                            <label class="col-md-2">Title</label>
+                            <label class="col-md-2"><bean:message key="newsPage.title"/></label>
 
                             <div class="col-md-10">
                                 ${newsForm.title}
@@ -43,7 +43,7 @@
                         </div>
                         <br>
                         <div class="row">
-                            <label class="col-md-2">Date</label>
+                            <label class="col-md-2"><bean:message key="newsPage.date"/></label>
 
                             <div class="col-md-10">
                                 ${newsForm.date}
@@ -51,7 +51,7 @@
                         </div>
                         <br>
                         <div class="row">
-                            <label class="col-md-2">Brief</label>
+                            <label class="col-md-2"><bean:message key="newsPage.brief"/></label>
 
                             <div class="col-md-10">
                                 ${newsForm.brief}
@@ -59,7 +59,7 @@
                         </div>
                         <br>
                         <div class="row">
-                            <label class="col-md-2">Content</label>
+                            <label class="col-md-2"><bean:message key="newsPage.content"/></label>
 
                             <div class="col-md-10">
                                 ${newsForm.content}
@@ -68,10 +68,9 @@
                         <br>
 
                         <div>
-                            <a href="${pageContext.request.contextPath}/newsList.do" class="btn btn-default">Back to
-                                news list</a>
-                            <html:link action="/editNews?id=${param.id}" styleClass="btn btn-primary">Edit</html:link>
-                            <html:link action="/deleteNews?id=${param.id}" styleClass="btn btn-primary">Delete</html:link>
+                            <a href="${pageContext.request.contextPath}/newsList.do" class="btn btn-default"><bean:message key="buttons.backToList"/></a>
+                            <html:link action="/editNews?id=${param.id}" styleClass="btn btn-primary"><bean:message key="buttons.edit"/></html:link>
+                            <html:link action="/deleteNews?id=${param.id}" styleClass="btn btn-primary"><bean:message key="buttons.delete"/></html:link>
                         </div>
 
                     </div>

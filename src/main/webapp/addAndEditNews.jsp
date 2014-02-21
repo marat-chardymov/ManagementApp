@@ -21,7 +21,7 @@
         <div class="col-md-12 column">
             <div class="page-header">
                 <h1>
-                    News management
+                    <bean:message key="header.title"/>
                 </h1>
             </div>
         </div>
@@ -33,15 +33,15 @@
                     <div class="col-md-3 column">
                         <nav>
                             <ul class="nav nav-pills nav-stacked span2">
-                                <li><a href="${pageContext.request.contextPath}/newsList.do">News List</a></li>
-                                <li class="active"><a href="addAndEditNews.jsp">Add news</a></li>
+                                <li><a href="${pageContext.request.contextPath}/newsList.do"><bean:message key="menu.newsList"/></a></li>
+                                <li class="active"><a href="addAndEditNews.jsp"><bean:message key="menu.addNews"/></a></li>
                             </ul>
                         </nav>
                     </div>
                     <div class="col-md-9 column">
                         <html:form action="/addNews?id=${param.id}" styleClass="form-horizontal">
                             <div class="form-group">
-                                <label for="title" class="col-sm-2 control-label">Title</label>
+                                <label for="title" class="col-sm-2 control-label"><bean:message key="newsPage.title"/></label>
 
                                 <div class="col-sm-8">
                                     <html:text property="title" styleId="title"
@@ -49,7 +49,7 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="date" class="col-sm-2 control-label">Date</label>
+                                <label for="date" class="col-sm-2 control-label"><bean:message key="newsPage.date"/></label>
 
                                 <div class="col-sm-8">
                                     <html:text property="date" styleId="date"
@@ -57,14 +57,14 @@
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="brief" class="col-sm-2 control-label">Brief</label>
+                                <label for="brief" class="col-sm-2 control-label"><bean:message key="newsPage.brief"/></label>
 
                                 <div class="col-sm-8">
                                     <html:textarea property="brief" styleId="brief" styleClass="form-control" value="${newsForm.brief}"/>
                                 </div>
                             </div>
                             <div class="form-group">
-                                <label for="content" class="col-sm-2 control-label">Content</label>
+                                <label for="content" class="col-sm-2 control-label"><bean:message key="newsPage.content"/></label>
 
                                 <div class="col-sm-8">
                                     <html:textarea property="content" styleId="content" styleClass="form-control" value="${newsForm.content}"/>
@@ -73,7 +73,7 @@
                             <div class="form-group">
                                 <div class="col-sm-offset-2 col-sm-6">
                                     <html:submit styleClass="btn btn-primary"><bean:message key="buttons.save"/></html:submit>
-                                    <a href="${pageContext.request.contextPath}/newsList.do" class="btn btn-default">Cancel</a>
+                                    <a href="${pageContext.request.contextPath}/newsList.do" class="btn btn-default"><bean:message key="buttons.cancel"/></a>
                                 </div>
                             </div>
 
