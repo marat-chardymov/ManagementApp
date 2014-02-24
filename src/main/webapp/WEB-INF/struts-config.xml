@@ -14,6 +14,9 @@
     </form-beans>
 
     <action-mappings>
+        <action path="/User"
+                type="org.apache.struts.actions.ForwardAction"
+                parameter="/pages/user/user-form.jsp"/>
         <action path="/newsList" type="com.epam.action.news.NewsListAction">
             <forward name="success" path="/newsList.jsp"/>
         </action>
@@ -58,9 +61,14 @@
                       value="/WEB-INF/validator-rules.xml, /WEB-INF/validator-news.xml"/>
 
     </plug-in>
-    <!-- Spring Struts plugin -->
-    <plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">
-        <set-property property="contextConfigLocation"
-                      value="WEB-INF/application-context.xml"/>
+    <!--&lt;!&ndash; Spring Struts plugin &ndash;&gt;-->
+    <!--<plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">-->
+        <!--<set-property property="contextConfigLocation"-->
+                      <!--value="WEB-INF/application-context.xml"/>-->
+    <!--</plug-in>-->
+    <!-- Apache Tiles plugin -->
+    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+        <set-property property="definitions-config"
+                      value="/WEB-INF/tiles-defs.xml"/>
     </plug-in>
 </struts-config>

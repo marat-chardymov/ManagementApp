@@ -20,19 +20,19 @@ public class NewsDAOTest {
 
     @BeforeClass
     public static void setUp() {
-        beanFactory = new ClassPathXmlApplicationContext("WEB-INF/application-context.xml");
+        beanFactory = new ClassPathXmlApplicationContext("application-context.xml");
     }
 
     @Test
     public void createTest() {
-        INewsDAO newsDAO = (INewsDAO) beanFactory.getBean("newsDao");
+        INewsDAO newsDAO = (INewsDAO) beanFactory.getBean("newsDAO");
         News news = new News("createTest", "createTest", "createTest");
         newsDAO.save(news);
     }
 
     @Test
     public void readTest() {
-        INewsDAO newsDAO = (INewsDAO) beanFactory.getBean("newsDao");
+        INewsDAO newsDAO = (INewsDAO) beanFactory.getBean("newsDAO");
         News news = new News("readTest", "readTest", "readTest");
         newsDAO.save(news);
         News readedNews = newsDAO.read(news.getId());
@@ -41,7 +41,7 @@ public class NewsDAOTest {
 
     @Test
     public void updateTest() {
-        INewsDAO newsDAO = (INewsDAO) beanFactory.getBean("newsDao");
+        INewsDAO newsDAO = (INewsDAO) beanFactory.getBean("newsDAO");
         News news = new News("updateTest", "updateTest", "updateTest");
         newsDAO.save(news);
         news = newsDAO.read(news.getId());
@@ -55,7 +55,7 @@ public class NewsDAOTest {
 
     @Test(expected = EmptyResultDataAccessException.class)
     public void deleteTest() {
-        INewsDAO newsDAO = (INewsDAO) beanFactory.getBean("newsDao");
+        INewsDAO newsDAO = (INewsDAO) beanFactory.getBean("newsDAO");
         News news = new News("deleteTest", "deleteTest", "deleteTest");
         newsDAO.save(news);
         newsDAO.delete(news.getId());
@@ -65,7 +65,7 @@ public class NewsDAOTest {
 
     @Test
     public void findAll() {
-        INewsDAO newsDAO = (INewsDAO) beanFactory.getBean("newsDao");
+        INewsDAO newsDAO = (INewsDAO) beanFactory.getBean("newsDAO");
         List<News> list = newsDAO.findAll();
         Assert.assertNotNull(list);
     }
