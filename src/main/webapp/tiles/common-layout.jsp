@@ -1,4 +1,7 @@
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
+
+<link href="css/app.css" rel="stylesheet">
+
 <html>
 <head><title></title></head>
 <body>

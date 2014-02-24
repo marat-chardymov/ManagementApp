@@ -3,10 +3,10 @@
         "http://struts.apache.org/dtds/tiles-config_1_3.dtd">
 <tiles-definitions>
 
-    <definition name="news-template" path="/pages/tiles/common-layout.jsp">
-        <put name="header" value="/pages/tiles/header.jsp" />
-        <put name="menu" value="/pages/tiles/menu.jsp" />
-        <put name="footer" value="/pages/tiles/footer.jsp" />
+    <definition name="news-template" path="/tiles/common-layout.jsp">
+        <put name="header" value="/tiles/header.jsp" />
+        <put name="menu" value="/tiles/menu.jsp" />
+        <put name="footer" value="/tiles/footer.jsp" />
     </definition>
 
 </tiles-definitions>

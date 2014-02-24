@@ -6,7 +6,7 @@
                 <div class="col-md-3 column">
                     <nav>
                         <ul class="nav nav-pills nav-stacked span2">
-                            <li class="active"><a href="#"><bean:message key="menu.newsList"/></a></li>
+                            <li class="active"><a href="newsList.do"><bean:message key="menu.newsList"/></a></li>
                             <li><a href="addAndEditNews.jsp"><bean:message key="menu.addNews"/></a></li>
                         </ul>
                     </nav>
