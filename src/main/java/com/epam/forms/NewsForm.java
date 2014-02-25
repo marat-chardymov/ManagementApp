@@ -13,7 +13,7 @@ public class NewsForm extends ValidatorForm {
     private String date;
     private String brief;
     private String content;
-    private String[] selectedItems;
+    private int[] selectedItems;
 
     public String getTitle() {
         return title;
@@ -47,11 +47,11 @@ public class NewsForm extends ValidatorForm {
         this.content = content;
     }
 
-    public String[] getSelectedItems() {
+    public int[] getSelectedItems() {
         return selectedItems;
     }
 
-    public void setSelectedItems(String[] selectedItems) {
+    public void setSelectedItems(int[] selectedItems) {
         this.selectedItems = selectedItems;
     }
 

@@ -34,9 +34,8 @@ public class NewsAction extends DispatchAction {
                                     HttpServletRequest request, HttpServletResponse response) {
         INewsDAO newsDAO = getNewsDAO();
         NewsForm newsDeleteForm = (NewsForm) form;
-        String[] strDeleteIds = (String[]) newsDeleteForm.getSelectedItems();
-        for (String strId : strDeleteIds) {
-            int id = Integer.parseInt(strId);
+        int[] deleteIds = newsDeleteForm.getSelectedItems();
+        for (int id : deleteIds) {
             newsDAO.delete(id);
         }
         return mapping.findForward("successDeleteList");
