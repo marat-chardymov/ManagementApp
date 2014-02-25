@@ -1,6 +1,8 @@
 <%@ include file="/tiles/libs.jsp" %>
+<%@ page language="java" contentType="text/html; charset=UTF-8"
+         pageEncoding="UTF-8" %>
 <div class="col-md-9 column">
-    <html:form action="/deleteNewsList">
+    <html:form action="/NewsAction.do?action=deleteList">
         <c:forEach items="${newsList}" var="news">
             <div>
                 <h2>
@@ -15,8 +17,8 @@
                 </p>
 
                 <div class="RUDbuttons">
-                    <html:link action="/viewNews?id=${news.id}"><bean:message key="links.view"/></html:link>
-                    <html:link action="/editNews?id=${news.id}"><bean:message key="links.edit"/></html:link>
+                    <html:link action="/NewsAction.do?action=view&id=${news.id}"><bean:message key="links.view"/></html:link>
+                    <html:link action="/NewsAction.do?action=edit&id=${news.id}"><bean:message key="links.edit"/></html:link>
                     <html:multibox property="selectedItems" value="${news.id}"/>
                 </div>
             </div>

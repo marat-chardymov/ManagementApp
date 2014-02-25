@@ -1,6 +1,6 @@
 <%@ include file="/tiles/libs.jsp" %>
 <div class="col-md-9 column">
-    <html:form action="/addNews?id=${param.id}" styleClass="form-horizontal">
+    <html:form action="/NewsAction.do?action=save&id=${param.id}" styleClass="form-horizontal">
         <%-- title--%>
         <div class="form-group">
             <label for="title" class="col-sm-2 control-label"><bean:message

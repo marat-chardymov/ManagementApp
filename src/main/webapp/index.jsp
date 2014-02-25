@@ -1,1 +1,1 @@
-<jsp:forward page="newsList.do"/>
+<jsp:forward page="/NewsAction.do?action=list"/>

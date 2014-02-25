@@ -7,10 +7,10 @@
                     <nav>
                         <ul class="nav nav-pills nav-stacked span2">
                             <li ${pageContext.request.requestURI.contains('newsList.jsp') ? 'class="active"':""} >
-                                <a href="newsList.do"><bean:message key="menu.newsList"/></a>
+                                <a href="NewsAction.do?action=list"><bean:message key="menu.newsList"/></a>
                             </li>
                             <li ${pageContext.request.requestURI.contains('addAndEditNews.jsp') ? 'class="active"':""} >
-                                <a href="addAndEditNews.jsp"><bean:message key="menu.addNews"/></a>
+                                <a href="NewsAction.do?action=add"><bean:message key="menu.addNews"/></a>
                             </li>
                         </ul>
                     </nav>

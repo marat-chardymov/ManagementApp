@@ -6,68 +6,39 @@
 <struts-config>
 
     <form-beans>
-        <form-bean name="dynaNewsListDeleteForm"
-                   type="org.apache.struts.action.DynaActionForm">
-            <form-property name="selectedItems" type="java.lang.String[]"/>
-        </form-bean>
         <form-bean name="newsForm" type="com.epam.forms.NewsForm"/>
     </form-beans>
 
     <action-mappings>
-        <action path="/User"
-                type="org.apache.struts.actions.ForwardAction"
-                parameter="/pages/user/user-form.jsp"/>
-        <action path="/newsList" type="com.epam.action.news.NewsListAction">
-            <forward name="success" path="/newsList.jsp"/>
-        </action>
-        <action path="/deleteNewsList"
-                type="com.epam.action.news.NewsListDeleteAction"
-                name="dynaNewsListDeleteForm">
-            <forward name="success" path="/newsList.do"/>
-        </action>
-        <action path="/deleteNews"
-                type="com.epam.action.news.NewsDeleteAction">
-            <forward name="success" path="/newsList.do"/>
-        </action>
-        <action path="/addNews"
-                type="com.epam.action.news.SaveNewsAction"
-                name="newsForm" scope="request" input="/addAndEditNews.jsp">
-            <forward name="successAdd" path="/newsList.do"/>
-            <forward name="successEdit" path="/newsList.do" />
-        </action>
-        <action path="/editNews"
-                type="com.epam.action.news.EditNewsAction"
-                name="newsForm" scope="request" input="/addAndEditNews.jsp" validate="false">
-            <forward name="success" path="/addAndEditNews.jsp"/>
-        </action>
-        <action path="/viewNews"
-                type="com.epam.action.news.ViewNewsAction"
-                name="newsForm" scope="request" input="/viewNews.jsp" validate="false">
-            <forward name="success" path="/viewNews.jsp"/>
+        <action path="/NewsAction"
+                type="com.epam.action.news.NewsAction"
+                parameter="action" name="newsForm" validate="false">
+            <forward name="successList" path="/newsList.jsp"/>
+            <forward name="successDeleteList" path="/NewsAction.do?action=list"/>
+            <forward name="successDelete" path="/NewsAction.do?action=list"/>
+            <forward name="successAdd" path="/addAndEditNews.jsp"/>
+            <forward name="successView" path="/viewNews.jsp"/>
+            <forward name="successEdit" path="/addAndEditNews.jsp"/>
+            <forward name="successSave" path="/NewsAction.do?action=list"/>
         </action>
         <action path="/locale"
                 type="com.epam.action.LanguageSelectAction"
                 parameter="method">
-            <forward name="success" path="/newsList.do"/>
+            <forward name="success" path="/NewsAction.do?action=list"/>
         </action>
     </action-mappings>
 
 
     <message-resources
-            parameter="news" />
+            parameter="news"/>
     <!-- Validator plugin -->
-    <plug-in className="org.apache.struts.validator.ValidatorPlugIn" >
+    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
         <set-property property="pathnames"
                       value="/WEB-INF/validator-rules.xml, /WEB-INF/validator-news.xml"/>
 
     </plug-in>
-    <!--&lt;!&ndash; Spring Struts plugin &ndash;&gt;-->
-    <!--<plug-in className="org.springframework.web.struts.ContextLoaderPlugIn">-->
-        <!--<set-property property="contextConfigLocation"-->
-                      <!--value="WEB-INF/application-context.xml"/>-->
-    <!--</plug-in>-->
     <!-- Apache Tiles plugin -->
-    <plug-in className="org.apache.struts.tiles.TilesPlugin" >
+    <plug-in className="org.apache.struts.tiles.TilesPlugin">
         <set-property property="definitions-config"
                       value="/WEB-INF/tiles-defs.xml"/>
     </plug-in>
