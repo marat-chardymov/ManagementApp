@@ -1,9 +1,9 @@
 <%@ taglib uri="http://struts.apache.org/tags-tiles" prefix="tiles" %>
 
-<link href="css/app.css" rel="stylesheet">
-
 <html>
-<head><title></title></head>
+<head><title></title>
+    <link href="css/app.css" rel="stylesheet">
+</head>
 <body>
 <tiles:insert attribute="header"/>
 <tiles:insert attribute="menu"/>
