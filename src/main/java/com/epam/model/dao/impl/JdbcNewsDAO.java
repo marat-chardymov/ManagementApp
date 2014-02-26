@@ -9,11 +9,8 @@ import org.springframework.jdbc.support.GeneratedKeyHolder;
 import org.springframework.jdbc.support.KeyHolder;
 
 import java.math.BigDecimal;
-import java.sql.Connection;
-import java.sql.PreparedStatement;
-import java.sql.SQLException;
+import java.sql.*;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 import java.util.Map;
 
@@ -70,7 +67,10 @@ public class JdbcNewsDAO extends JdbcDaoSupport implements INewsDAO {
             news.setTitle((String) row.get("title"));
             news.setBrief((String) row.get("brief"));
             news.setContent((String) row.get("content"));
-            news.setCreatedAt((Date)row.get("created_at"));
+
+            Timestamp timestamp= (Timestamp) row.get("created_at");
+            long milSecTime =timestamp.getTime();
+            news.setCreatedAt(new java.sql.Date(milSecTime) );
             newsList.add(news);
         }
         return newsList;

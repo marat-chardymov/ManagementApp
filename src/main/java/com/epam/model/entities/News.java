@@ -1,6 +1,7 @@
 package com.epam.model.entities;
 
-import java.util.Date;
+
+import java.sql.Date;
 
 public class News extends AbstractEntity {
     private String content;

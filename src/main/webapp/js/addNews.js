@@ -1,5 +1,5 @@
 $('.datepicker').datepicker({
     autoclose: true,
-    format: 'dd-mm-yyyy'
+    format: 'yyyy-mm-dd'
 });
 $('.datepicker').datepicker('update', new Date());

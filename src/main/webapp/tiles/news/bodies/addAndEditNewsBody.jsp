@@ -17,8 +17,8 @@
                     </div>
                 </logic:messagesPresent>
                 <%-- title input --%>
-                <html:text property="title" styleId="title"
-                           styleClass="form-control" value="${newsForm.title}"></html:text>
+                <html:text property="news.title" styleId="title"
+                           styleClass="form-control" value="${newsForm.news.title}"></html:text>
             </div>
         </div>
         <%-- date--%>
@@ -37,8 +37,8 @@
                     </div>
                 </logic:messagesPresent>
                 <%-- date input --%>
-                <html:text property="date" styleId="date"
-                           styleClass="datepicker" value="${newsForm.date}"></html:text>
+                <html:text property="news.createdAt" styleId="date"
+                           styleClass="datepicker" value="${newsForm.news.createdAt}"></html:text>
             </div>
         </div>
         <%-- brief --%>
@@ -57,8 +57,8 @@
                     </div>
                 </logic:messagesPresent>
                 <%-- brief textarea --%>
-                <html:textarea property="brief" styleId="brief" styleClass="form-control"
-                               value="${newsForm.brief}"/>
+                <html:textarea property="news.brief" styleId="brief" styleClass="form-control"
+                               value="${newsForm.news.brief}"/>
             </div>
         </div>
         <%-- content --%>
@@ -77,8 +77,8 @@
                     </div>
                 </logic:messagesPresent>
                 <%-- content textarea --%>
-                <html:textarea property="content" styleId="content" styleClass="form-control"
-                               value="${newsForm.content}"/>
+                <html:textarea property="news.content" styleId="content" styleClass="form-control"
+                               value="${newsForm.news.content}"/>
             </div>
         </div>
         <div class="form-group">
