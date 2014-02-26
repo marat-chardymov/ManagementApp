@@ -12,7 +12,10 @@
 
     <script src="js/lib/jquery-1.11.0.min.js"
             type="text/javascript"></script>
-    <script src="js/lib/bootstrap-datepicker.js"></script>
+
+    <script src="js/lib/jquery_validation/jquery.validate.min.js"></script>
+    <script src="js/lib/jquery_validation/messages_ru.js"></script>
+    <script src="js/lib/date-picker/bootstrap-datepicker.js"></script>
     <html:base/>
 </head>
 <body>

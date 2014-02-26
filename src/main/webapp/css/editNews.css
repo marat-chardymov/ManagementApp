@@ -4,3 +4,11 @@ label{
 input{
     margin-bottom: 20px;
 }
+textarea{
+    margin-bottom: 20px;
+}
+label.error{
+    margin-bottom:-10px;
+    margin-top:-10px;
+    color: #D44950;
+}

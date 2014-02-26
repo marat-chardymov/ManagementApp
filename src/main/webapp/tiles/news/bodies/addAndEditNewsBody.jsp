@@ -1,13 +1,13 @@
 <%@ include file="/tiles/libs.jsp" %>
 <div class="col-md-9 column">
-    <html:form action="/NewsAction.do?action=save&id=${param.id}" styleClass="form-horizontal">
+    <html:form action="/NewsAction.do?action=save&id=${param.id}" styleClass="form-horizontal" styleId="newsForm">
         <%-- title--%>
         <div class="form-group">
             <label for="title" class="col-sm-2 control-label"><bean:message
                     key="newsPage.title"/></label>
 
             <div class="col-sm-8">
-                <%-- title input --%>
+                    <%-- title input --%>
                 <html:text property="news.title" styleId="title"
                            styleClass="form-control" value="${newsForm.news.title}"></html:text>
             </div>
@@ -18,7 +18,7 @@
                     key="newsPage.date"/></label>
 
             <div class="col-sm-8">
-                <%-- date input --%>
+                    <%-- date input --%>
                 <html:text property="news.createdAt" styleId="date"
                            styleClass="datepicker" value="${newsForm.news.createdAt}"></html:text>
             </div>
@@ -29,8 +29,8 @@
                     key="newsPage.brief"/></label>
 
             <div class="col-sm-8">
-                <%-- brief textarea --%>
-                <html:textarea property="news.brief" styleId="brief" styleClass="form-control"
+                    <%-- brief textarea --%>
+                <html:textarea property="news.brief" styleId="brief" name="brief" styleClass="form-control required"
                                value="${newsForm.news.brief}"/>
             </div>
         </div>
@@ -40,7 +40,7 @@
                     key="newsPage.content"/></label>
 
             <div class="col-sm-8">
-                <%-- content textarea --%>
+                    <%-- content textarea --%>
                 <html:textarea property="news.content" styleId="content" styleClass="form-control"
                                value="${newsForm.news.content}"/>
             </div>
@@ -53,9 +53,7 @@
                    class="btn btn-default"><bean:message key="buttons.cancel"/></a>
             </div>
         </div>
-
-
     </html:form>
 </div>
-<script src="js/addNews.js"></script>
+<script src="js/news.js"></script>
                 
