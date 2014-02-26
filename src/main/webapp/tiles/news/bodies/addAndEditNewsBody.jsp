@@ -1,3 +1,4 @@
+<%@ page import="java.util.Locale" %>
 <%@ include file="/tiles/libs.jsp" %>
 <div class="col-md-9 column">
     <html:form action="/NewsAction.do?action=save&id=${param.id}" styleClass="form-horizontal" styleId="newsForm">
@@ -42,7 +43,7 @@
             <div class="col-sm-8">
                     <%-- content textarea --%>
                 <html:textarea property="news.content" styleId="content" styleClass="form-control"
-                               value="${newsForm.news.content}"/>
+                               value="${newsForm.news.content}" rows="10"/>
             </div>
         </div>
         <div class="form-group">
@@ -55,5 +56,9 @@
         </div>
     </html:form>
 </div>
+<% if(((Locale)request.getSession().getAttribute("org.apache.struts.action.LOCALE")).getLanguage().equals("ru")){ %>
+<%="<script src='js/lib/jquery_validation/messages_ru.js'></script>" %>
+<%=" <script src='js/lib/date-picker/bootstrap-datepicker.ru.js'></script>" %>
+<% } %>
 <script src="js/news.js"></script>
                 

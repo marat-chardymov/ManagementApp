@@ -31,7 +31,6 @@ public class LanguageSelectAction extends DispatchAction {
 
         request.getSession().setAttribute(
                 Globals.LOCALE_KEY, new Locale("ru"));
-
         return mapping.findForward("success");
     }
 }

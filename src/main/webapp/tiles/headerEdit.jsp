@@ -14,7 +14,6 @@
             type="text/javascript"></script>
 
     <script src="js/lib/jquery_validation/jquery.validate.min.js"></script>
-    <script src="js/lib/jquery_validation/messages_ru.js"></script>
     <script src="js/lib/date-picker/bootstrap-datepicker.js"></script>
     <html:base/>
 </head>
