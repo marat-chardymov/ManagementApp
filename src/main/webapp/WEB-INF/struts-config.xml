@@ -12,7 +12,7 @@
     <action-mappings>
         <action path="/NewsAction"
                 type="com.epam.action.news.NewsAction"
-                parameter="action" name="newsForm" validate="false">
+                parameter="action" name="newsForm">
             <forward name="successList" path="/newsList.jsp"/>
             <forward name="successDeleteList" path="/NewsAction.do?action=list"/>
             <forward name="successDelete" path="/NewsAction.do?action=list"/>
@@ -31,12 +31,7 @@
 
     <message-resources
             parameter="news"/>
-    <!-- Validator plugin -->
-    <plug-in className="org.apache.struts.validator.ValidatorPlugIn">
-        <set-property property="pathnames"
-                      value="/WEB-INF/validator-rules.xml, /WEB-INF/validator-news.xml"/>
 
-    </plug-in>
     <!-- Apache Tiles plugin -->
     <plug-in className="org.apache.struts.tiles.TilesPlugin">
         <set-property property="definitions-config"

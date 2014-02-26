@@ -12,7 +12,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.InvocationTargetException;
 import java.util.HashMap;
 
-public class NewsForm extends ValidatorForm {
+public class NewsForm extends ActionForm {
 
     private News news=new News();
     private int[] selectedItems;
