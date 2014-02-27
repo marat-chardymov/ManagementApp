@@ -5,7 +5,6 @@ $('.datepicker').datepicker({
 });
 $('.datepicker').datepicker('update', new Date());
 
-
 $("#newsForm").validate();
 $( "#title" ).rules( "add", {
     required: true,
