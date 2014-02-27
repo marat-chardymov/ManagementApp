@@ -12,6 +12,12 @@
     <script src="js/lib/jquery-1.11.0.min.js"
             type="text/javascript"></script>
     <script src="js/lib/jquery_validation/jquery.validate.min.js"></script>
+    <!-- HTML5 shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!--[if lt IE 9]>
+    <script type='text/javascript' src="js/lib/ie_support/html5shiv.js"></script>
+    <script type='text/javascript' src="js/lib/ie_support/respond.min.js"></script>
+    <![endif]-->
+
 </head>
 <body>
 <tiles:insert attribute="header"/>
