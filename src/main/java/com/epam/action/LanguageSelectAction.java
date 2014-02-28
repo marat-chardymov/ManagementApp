@@ -10,9 +10,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.util.Locale;
 
-/**
- * Created by Marat_Chardymau on 2/21/14.
- */
+
 public class LanguageSelectAction extends DispatchAction {
 
     public ActionForward english(ActionMapping mapping,ActionForm form,
@@ -20,7 +18,6 @@ public class LanguageSelectAction extends DispatchAction {
             throws Exception {
         request.getSession().setAttribute(
                 Globals.LOCALE_KEY, Locale.ENGLISH);
-        //return mapping.findForward("success");
         String referer=request.getHeader("referer");
         return new ActionForward(referer,true);
     }
@@ -30,7 +27,6 @@ public class LanguageSelectAction extends DispatchAction {
             throws Exception {
         request.getSession().setAttribute(
                 Globals.LOCALE_KEY, new Locale("ru"));
-        //return mapping.findForward("success");
         String referer=request.getHeader("referer");
         return new ActionForward(referer,true);
     }
