@@ -11,7 +11,7 @@
 
     <action-mappings>
         <action path="/NewsAction"
-                type="com.epam.action.news.NewsAction"
+                type="org.springframework.web.struts.DelegatingActionProxy"
                 parameter="action" name="newsForm">
             <forward name="successList" path="/newsList.jsp"/>
             <forward name="successDeleteList" path="/NewsAction.do?action=list"/>
@@ -22,7 +22,7 @@
             <forward name="successSave" path="/NewsAction.do?action=list"/>
         </action>
         <action path="/locale"
-                type="com.epam.action.LanguageSelectAction"
+                type="org.springframework.web.struts.DelegatingActionProxy"
                 parameter="method">
             <forward name="success" path="/NewsAction.do?action=list"/>
         </action>
@@ -36,5 +36,11 @@
     <plug-in className="org.apache.struts.tiles.TilesPlugin">
         <set-property property="definitions-config"
                       value="/WEB-INF/tiles-defs.xml"/>
+    </plug-in>
+
+    <plug-in className=
+                     "org.springframework.web.struts.ContextLoaderPlugIn">
+        <set-property property=
+                              "contextConfigLocation" value="/WEB-INF/application-context.xml"/>
     </plug-in>
 </struts-config>

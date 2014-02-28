@@ -2,6 +2,7 @@ package com.epam.action.news;
 
 import com.epam.forms.NewsForm;
 import com.epam.model.dao.INewsDAO;
+import com.epam.model.dao.impl.JdbcNewsDAO;
 import com.epam.model.entities.News;
 import org.apache.commons.beanutils.BeanUtilsBean;
 import org.apache.struts.action.ActionForm;
@@ -17,6 +18,16 @@ import java.text.ParseException;
 import java.util.List;
 
 public class NewsAction extends DispatchAction {
+
+    private INewsDAO newsDAO;
+
+    public void setNewsDAO(INewsDAO newsDAO) {
+        this.newsDAO = newsDAO;
+    }
+
+    public INewsDAO getNewsDAO() {
+        return newsDAO;
+    }
 
     public ActionForward list(ActionMapping mapping, ActionForm form,
                               HttpServletRequest request, HttpServletResponse response) {
@@ -87,12 +98,6 @@ public class NewsAction extends DispatchAction {
         NewsForm newsForm = (NewsForm) form;
         newsForm.setNews(news);
         return mapping.findForward("successView");
-    }
-
-    private INewsDAO getNewsDAO() {
-        ApplicationContext context = new ClassPathXmlApplicationContext(
-                "application-context.xml");
-        return (INewsDAO) context.getBean("newsDAO");
     }
 
 }
