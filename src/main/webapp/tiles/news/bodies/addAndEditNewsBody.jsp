@@ -50,7 +50,7 @@
             <div class="col-sm-offset-2 col-sm-6">
                 <html:submit styleClass="btn btn-primary"><bean:message
                         key="buttons.save"/></html:submit>
-                <button class="btn btn-default" onclick="history.go(-1);">
+                <button class="btn btn-default" onclick="javascript:history.back();return false;">
                     <bean:message key="buttons.cancel"/>
                 </button>
             </div>
