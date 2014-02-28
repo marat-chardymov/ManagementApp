@@ -34,7 +34,6 @@
     <br>
 
     <div>
-        <a href="${pageContext.request.contextPath}/newsList.do" class="btn btn-default"><bean:message key="buttons.backToList"/></a>
         <html:link action="/NewsAction.do?action=edit&id=${param.id}" styleClass="btn btn-primary"><bean:message key="buttons.edit"/></html:link>
         <html:link action="/NewsAction.do?action=delete&id=${param.id}" styleClass="btn btn-primary"><bean:message key="buttons.delete"/></html:link>
     </div>

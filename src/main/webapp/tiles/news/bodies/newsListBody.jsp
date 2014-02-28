@@ -4,7 +4,7 @@
 <div class="col-md-9 column">
     <html:form action="/NewsAction.do?action=deleteList">
         <c:forEach items="${newsList}" var="news">
-            <div>
+            <div class="newsBlock">
                 <h2>
                         ${news.title}
                 </h2>

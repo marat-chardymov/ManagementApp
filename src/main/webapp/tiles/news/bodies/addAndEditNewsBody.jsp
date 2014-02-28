@@ -50,8 +50,9 @@
             <div class="col-sm-offset-2 col-sm-6">
                 <html:submit styleClass="btn btn-primary"><bean:message
                         key="buttons.save"/></html:submit>
-                <a href="${pageContext.request.contextPath}/NewsAction.do?action=list"
-                   class="btn btn-default"><bean:message key="buttons.cancel"/></a>
+                <button class="btn btn-default" onclick="history.go(document.referrer);">
+                    <bean:message key="buttons.cancel"/>
+                </button>
             </div>
         </div>
     </html:form>
