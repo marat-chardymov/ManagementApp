@@ -3,7 +3,7 @@
          pageEncoding="UTF-8" %>
 <div class="col-md-9 column">
     <html:form action="/NewsAction.do?action=deleteList">
-        <c:forEach items="${newsList}" var="news">
+        <c:forEach items="${newsForm.newsList}" var="news">
             <div class="newsBlock">
                 <h2>
                         ${news.title}

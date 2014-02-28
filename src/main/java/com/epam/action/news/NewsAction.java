@@ -33,15 +33,16 @@ public class NewsAction extends DispatchAction {
                               HttpServletRequest request, HttpServletResponse response) {
         INewsDAO newsDAO = getNewsDAO();
         List<News> newsList = newsDAO.findAll();
-        request.setAttribute("newsList", newsList);
+        NewsForm newsForm = (NewsForm) form;
+        newsForm.setNewsList(newsList);
         return mapping.findForward("successList");
     }
 
     public ActionForward deleteList(ActionMapping mapping, ActionForm form,
                                     HttpServletRequest request, HttpServletResponse response) {
         INewsDAO newsDAO = getNewsDAO();
-        NewsForm newsDeleteForm = (NewsForm) form;
-        int[] deleteIds = newsDeleteForm.getSelectedItems();
+        NewsForm newsForm = (NewsForm) form;
+        int[] deleteIds = newsForm.getSelectedItems();
         for (int id : deleteIds) {
             newsDAO.delete(id);
         }

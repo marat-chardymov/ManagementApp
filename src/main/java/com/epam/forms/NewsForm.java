@@ -10,11 +10,14 @@ import org.apache.struts.validator.ValidatorForm;
 
 import javax.servlet.http.HttpServletRequest;
 import java.lang.reflect.InvocationTargetException;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 
 public class NewsForm extends ActionForm {
 
-    private News news=new News();
+    private News news = new News();
+    private List<News> newsList = new ArrayList<News>();
     private int[] selectedItems;
 
     public News getNews() {
@@ -31,6 +34,14 @@ public class NewsForm extends ActionForm {
 
     public void setSelectedItems(int[] selectedItems) {
         this.selectedItems = selectedItems;
+    }
+
+    public List<News> getNewsList() {
+        return newsList;
+    }
+
+    public void setNewsList(List<News> newsList) {
+        this.newsList = newsList;
     }
 
     @Override
