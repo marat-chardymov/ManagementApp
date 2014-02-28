@@ -24,7 +24,6 @@
         <action path="/locale"
                 type="org.springframework.web.struts.DelegatingActionProxy"
                 parameter="method">
-            <forward name="success" path="/NewsAction.do?action=list"/>
         </action>
     </action-mappings>
 

@@ -18,19 +18,20 @@ public class LanguageSelectAction extends DispatchAction {
     public ActionForward english(ActionMapping mapping,ActionForm form,
                                  HttpServletRequest request,HttpServletResponse response)
             throws Exception {
-
         request.getSession().setAttribute(
                 Globals.LOCALE_KEY, Locale.ENGLISH);
-
-        return mapping.findForward("success");
+        //return mapping.findForward("success");
+        String referer=request.getHeader("referer");
+        return new ActionForward(referer,true);
     }
 
     public ActionForward russian(ActionMapping mapping,ActionForm form,
                                 HttpServletRequest request,HttpServletResponse response)
             throws Exception {
-
         request.getSession().setAttribute(
                 Globals.LOCALE_KEY, new Locale("ru"));
-        return mapping.findForward("success");
+        //return mapping.findForward("success");
+        String referer=request.getHeader("referer");
+        return new ActionForward(referer,true);
     }
 }

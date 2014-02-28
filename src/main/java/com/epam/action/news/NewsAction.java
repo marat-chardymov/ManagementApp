@@ -15,6 +15,7 @@ import org.springframework.context.support.ClassPathXmlApplicationContext;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.text.ParseException;
+import java.util.Date;
 import java.util.List;
 
 public class NewsAction extends DispatchAction {
@@ -59,6 +60,12 @@ public class NewsAction extends DispatchAction {
 
     public ActionForward add(ActionMapping mapping, ActionForm form,
                              HttpServletRequest request, HttpServletResponse response) throws ParseException {
+        News news = new News();
+        long time = new Date().getTime();
+        java.sql.Date sqlDate = new java.sql.Date(time);
+        news.setCreatedAt(sqlDate);
+        NewsForm newsForm = (NewsForm) form;
+        newsForm.setNews(news);
         return mapping.findForward("successAdd");
     }
 
