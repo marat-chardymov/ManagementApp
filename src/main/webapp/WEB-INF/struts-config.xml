@@ -14,8 +14,8 @@
                 type="org.springframework.web.struts.DelegatingActionProxy"
                 parameter="action" name="newsForm">
             <forward name="successList" path="/newsList.jsp"/>
-            <forward name="successDeleteList" path="/NewsAction.do?action=list"/>
-            <forward name="successDelete" path="/NewsAction.do?action=list"/>
+            <forward name="successDeleteList" path="/NewsAction.do?action=list" redirect="true"/>
+            <forward name="successDelete" path="/NewsAction.do?action=list" redirect="true"/>
             <forward name="successAdd" path="/addAndEditNews.jsp"/>
             <forward name="successView" path="/viewNews.jsp"/>
             <forward name="successEdit" path="/addAndEditNews.jsp"/>

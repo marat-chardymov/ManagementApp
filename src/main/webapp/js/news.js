@@ -3,7 +3,6 @@ $('.datepicker').datepicker({
     format: 'yyyy-mm-dd',
     language: "ru-RU"
 });
-$('.datepicker').datepicker('update', new Date());
 
 $("#newsForm").validate();
 $( "#title" ).rules( "add", {
