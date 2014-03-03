@@ -15,42 +15,60 @@ import java.util.concurrent.TimeUnit;
 public class ConnectionPool {
 
     private static final Logger LOG = Logger.getLogger(ConnectionPool.class.getName());
-    private static final ConnectionPool instance = new ConnectionPool();
     private LinkedBlockingDeque<Connection> connections = new LinkedBlockingDeque<Connection>();
-    private Properties properties;
+    //pool parameters
+    private String driverClassName;
+    private String jdbcUrl;
+    private String username;
+    private String password;
+    private String initPoolSize;
 
-
-    private ConnectionPool() {
+    public ConnectionPool() {
     }
 
-    public static ConnectionPool getInstance() {
-        return instance;
+    public void setDriverClassName(String driverClassName) {
+        this.driverClassName = driverClassName;
+    }
+
+    public void setJdbcUrl(String jdbcUrl) {
+        this.jdbcUrl = jdbcUrl;
+    }
+
+    public void setUsername(String username) {
+        this.username = username;
+    }
+
+    public void setPassword(String password) {
+        this.password = password;
+    }
+
+    public void setInitPoolSize(String initPoolSize) {
+        this.initPoolSize = initPoolSize;
     }
 
     private Connection createConnection() throws AppConnectionException {
         try {
             return DriverManager.getConnection(
-                    properties.getProperty("jdbcUrl"), properties.getProperty("user"),
-                    properties.getProperty("password"));
+                    jdbcUrl, username,
+                    password);
         } catch (SQLException ex) {
-            LOG.log(Level.ERROR, "Exception in DatabasePool.createConnection",
+            LOG.log(Level.ERROR, "Exception in ConnectionPool.createConnection",
                     ex);
-            throw new AppConnectionException("ERROR_CONNECTION_TO_DB", ex);
+            throw new AppConnectionException("Exception in ConnectionPool.createConnection()", ex);
         }
     }
 
 
-    public void init(Properties properties)
+    public void init()
             throws AppConnectionException {
-        this.properties = properties;
         try {
-            Class.forName(properties.getProperty("jdbcUrl"));
+            Class.forName(driverClassName);
         } catch (ClassNotFoundException ex) {
-            LOG.log(Level.ERROR, "Exception in DatabasePool.init:", ex);
-            throw new AppConnectionException("ERROR_LOAD_DB_DRIVER", ex);
+            LOG.log(Level.ERROR, "Exception in ConnectionPool.init():", ex);
+            throw new AppConnectionException("Exception in ConnectionPool.init():", ex);
         }
-        int initPoolSize= Integer.parseInt(properties.getProperty("initialPoolSize"));
-        for (int i = 0; i < initPoolSize ; i++) {
+        int poolSize= Integer.parseInt(initPoolSize);
+        for (int i = 0; i < poolSize ; i++) {
             connections.add(createConnection());
         }
     }
@@ -65,23 +83,20 @@ public class ConnectionPool {
             }
             return connection;
         } catch (InterruptedException ex) {
-            LOG.log(Level.ERROR, "Exception in DatabasePool.getConnection:", ex);
+            LOG.log(Level.ERROR, "can't get connection cause InterruptedException in pool.poll()", ex);
             return getConnection();
-        } catch (AppConnectionException ex1) {
-            LOG.log(Level.ERROR, "Exception in DatabasePool.getConnection:",
-                    ex1);
-            throw new AppConnectionException("ERROR_CONNECTION_TO_DB", ex1);
         }
     }
 
 
-    public void release(Connection connection) {
+    public void release(Connection connection) throws AppConnectionException{
         try {
             if (!connection.isClosed()) {
                 connections.add(connection);
             }
         } catch (SQLException ex) {
-            LOG.log(Level.ERROR, "Exception in Databasepool.release", ex);
+            LOG.log(Level.ERROR, "can't release connection; isClosed() check failed", ex);
+            throw new AppConnectionException("can't release connection; isClosed() check failed",ex);
         }
     }
 

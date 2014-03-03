@@ -3,14 +3,17 @@
        xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
+
     <bean id="newsDAO" class="com.epam.model.dao.impl.JdbcNewsDAO">
-        <property name="dataSource" ref="dataSource"/>
+        <property name="pool" ref="pool"/>
     </bean>
-    <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+
+    <bean id="pool" class="com.epam.model.db.ConnectionPool" init-method="init" destroy-method="destroy">
         <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
-        <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe"/>
+        <property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"/>
         <property name="username" value="system"/>
         <property name="password" value="sesame"/>
+        <property name="initPoolSize" value="5"/>
     </bean>
 
     <!-- Struts action beans -->

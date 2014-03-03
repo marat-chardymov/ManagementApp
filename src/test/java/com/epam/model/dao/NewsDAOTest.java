@@ -1,6 +1,7 @@
 package com.epam.model.dao;
 
 
+import com.epam.exceptions.AppDAOException;
 import com.epam.model.entities.News;
 import org.junit.Assert;
 import org.junit.BeforeClass;
@@ -24,14 +25,14 @@ public class NewsDAOTest {
     }
 
     @Test
-    public void createTest() {
+    public void createTest() throws AppDAOException {
         INewsDAO newsDAO = (INewsDAO) beanFactory.getBean("newsDAO");
         News news = new News("createTest", "createTest", "createTest");
         newsDAO.save(news);
     }
 
     @Test
-    public void readTest() {
+    public void readTest() throws AppDAOException {
         INewsDAO newsDAO = (INewsDAO) beanFactory.getBean("newsDAO");
         News news = new News("readTest", "readTest", "readTest");
         newsDAO.save(news);
@@ -40,7 +41,7 @@ public class NewsDAOTest {
     }
 
     @Test
-    public void updateTest() {
+    public void updateTest() throws AppDAOException {
         INewsDAO newsDAO = (INewsDAO) beanFactory.getBean("newsDAO");
         News news = new News("updateTest", "updateTest", "updateTest");
         newsDAO.save(news);
@@ -54,7 +55,7 @@ public class NewsDAOTest {
     }
 
     @Test(expected = EmptyResultDataAccessException.class)
-    public void deleteTest() {
+    public void deleteTest() throws AppDAOException {
         INewsDAO newsDAO = (INewsDAO) beanFactory.getBean("newsDAO");
         News news = new News("deleteTest", "deleteTest", "deleteTest");
         newsDAO.save(news);
@@ -64,7 +65,7 @@ public class NewsDAOTest {
     }
 
     @Test
-    public void findAll() {
+    public void findAll() throws AppDAOException {
         INewsDAO newsDAO = (INewsDAO) beanFactory.getBean("newsDAO");
         List<News> list = newsDAO.findAll();
         Assert.assertNotNull(list);

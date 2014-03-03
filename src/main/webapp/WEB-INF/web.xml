@@ -5,6 +5,7 @@
          version="2.5">
 
     <display-name>Archetype Created Web Application</display-name>
+
     <servlet>
         <servlet-name>action</servlet-name>
         <servlet-class>

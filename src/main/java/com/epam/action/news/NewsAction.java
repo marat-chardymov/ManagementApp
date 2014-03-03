@@ -1,16 +1,13 @@
 package com.epam.action.news;
 
+import com.epam.exceptions.AppDAOException;
 import com.epam.forms.NewsForm;
 import com.epam.model.dao.INewsDAO;
-import com.epam.model.dao.impl.JdbcNewsDAO;
 import com.epam.model.entities.News;
-import org.apache.commons.beanutils.BeanUtilsBean;
 import org.apache.struts.action.ActionForm;
 import org.apache.struts.action.ActionForward;
 import org.apache.struts.action.ActionMapping;
 import org.apache.struts.actions.DispatchAction;
-import org.springframework.context.ApplicationContext;
-import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -33,7 +30,12 @@ public class NewsAction extends DispatchAction {
     public ActionForward list(ActionMapping mapping, ActionForm form,
                               HttpServletRequest request, HttpServletResponse response) {
         INewsDAO newsDAO = getNewsDAO();
-        List<News> newsList = newsDAO.findAll();
+        List<News> newsList = null;
+        try {
+            newsList = newsDAO.findAll();
+        } catch (AppDAOException e) {
+            e.printStackTrace();
+        }
         NewsForm newsForm = (NewsForm) form;
         newsForm.setNewsList(newsList);
         return mapping.findForward("successList");
@@ -45,7 +47,11 @@ public class NewsAction extends DispatchAction {
         NewsForm newsForm = (NewsForm) form;
         int[] deleteIds = newsForm.getSelectedItems();
         for (int id : deleteIds) {
-            newsDAO.delete(id);
+            try {
+                newsDAO.delete(id);
+            } catch (AppDAOException e) {
+                e.printStackTrace();
+            }
         }
         return mapping.findForward("successDeleteList");
     }
@@ -54,7 +60,11 @@ public class NewsAction extends DispatchAction {
                                 HttpServletRequest request, HttpServletResponse response) {
         INewsDAO newsDAO = getNewsDAO();
         int id = Integer.parseInt(request.getParameter("id"));
-        newsDAO.delete(id);
+        try {
+            newsDAO.delete(id);
+        } catch (AppDAOException e) {
+            e.printStackTrace();
+        }
         return mapping.findForward("successDelete");
     }
 
@@ -73,7 +83,12 @@ public class NewsAction extends DispatchAction {
                               HttpServletRequest request, HttpServletResponse response) throws ParseException {
         INewsDAO newsDAO = getNewsDAO();
         int id = Integer.parseInt(request.getParameter("id"));
-        News news = newsDAO.read(id);
+        News news = null;
+        try {
+            news = newsDAO.read(id);
+        } catch (AppDAOException e) {
+            e.printStackTrace();
+        }
         NewsForm newsForm = (NewsForm) form;
         newsForm.setNews(news);
         return mapping.findForward("successEdit");
@@ -89,10 +104,18 @@ public class NewsAction extends DispatchAction {
             int id = Integer.parseInt(request.getParameter("id"));
 
             news.setId(id);
-            newsDAO.update(news);
+            try {
+                newsDAO.update(news);
+            } catch (AppDAOException e) {
+                e.printStackTrace();
+            }
             return mapping.findForward("successSave");
         } else {
-            newsDAO.save(news);
+            try {
+                newsDAO.save(news);
+            } catch (AppDAOException e) {
+                e.printStackTrace();
+            }
             form.reset(mapping, request);
             return mapping.findForward("successSave");
         }
@@ -102,7 +125,12 @@ public class NewsAction extends DispatchAction {
                               HttpServletRequest request, HttpServletResponse response) throws ParseException {
         INewsDAO newsDAO = getNewsDAO();
         int id = Integer.parseInt(request.getParameter("id"));
-        News news = newsDAO.read(id);
+        News news = null;
+        try {
+            news = newsDAO.read(id);
+        } catch (AppDAOException e) {
+            e.printStackTrace();
+        }
         NewsForm newsForm = (NewsForm) form;
         newsForm.setNews(news);
         return mapping.findForward("successView");
