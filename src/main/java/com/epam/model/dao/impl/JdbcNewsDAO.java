@@ -26,22 +26,19 @@ public class JdbcNewsDAO extends AbstractDAO implements INewsDAO {
         ResultSet rs = null;
         try {
             connection = super.getConnection();
-            ps = connection.prepareStatement(SAVE_SQL, Statement.RETURN_GENERATED_KEYS);
+            ps = connection.prepareStatement(SAVE_SQL);
             ps.setString(1, news.getTitle());
             ps.setString(2, news.getBrief());
             ps.setString(3, news.getContent());
             ps.setDate(4, new java.sql.Date(news.getCreatedAt().getTime()));
             //we are trying to get id of inserted record
-            int affectedRows = ps.executeUpdate();
-            if (affectedRows == 0) {
-                throw new AppDAOException("Save news failed, no rows affected.");
-            }
-            rs = ps.getGeneratedKeys();
-            if (rs.next()) {
-                news.setId(rs.getInt(1));
-            } else {
-                throw new AppDAOException("Creating news failed, no generated key obtained.");
-            }
+            ps.executeUpdate();
+//            rs = ps.getGeneratedKeys();
+//            if (rs.next()) {
+//                news.setId(rs.getInt(1));
+//            } else {
+//                throw new AppDAOException("Creating news failed, no generated key obtained.");
+//            }
         } catch (SQLException e) {
             throw new AppDAOException("save news failed", e);
         } finally {
@@ -120,15 +117,15 @@ public class JdbcNewsDAO extends AbstractDAO implements INewsDAO {
         List<News> newsList = new ArrayList<News>();
         try {
             connection = super.getConnection();
-            st=connection.createStatement();
+            st = connection.createStatement();
             rs = st.executeQuery(FIND_ALL_SQL);
             while (rs.next()) {
                 int id = rs.getInt("ID");
                 String title = rs.getString("title");
                 String brief = rs.getString("brief");
                 String content = rs.getString("content");
-                Date createdAt=rs.getDate("created_at");
-                News news=new News(title, brief, content,createdAt);
+                Date createdAt = rs.getDate("created_at");
+                News news = new News(title, brief, content, createdAt);
                 news.setId(id);
                 newsList.add(news);
             }

@@ -51,7 +51,6 @@ public class NewsForm extends ActionForm {
         this.news.setCreatedAt(null);
         this.news.setBrief("");
         this.news.setContent("");
-////        this.news=null;
     }
 
 }
