@@ -57,9 +57,11 @@
         </div>
     </html:form>
 </div>
+<%-- switch js to appropriate localized version --%>
 <% if(((Locale)request.getSession().getAttribute("org.apache.struts.action.LOCALE")).getLanguage().equals("ru")){ %>
-<%="<script src='js/lib/jquery_validation/messages_ru.js'></script>" %>
-<%=" <script src='js/lib/date-picker/bootstrap-datepicker.ru.js'></script>" %>
+<%= "<script src='js/lib/jquery_validation/messages_ru.js'></script>" %>
+<%= "<script src='js/lib/date-picker/bootstrap-datepicker.ru.js'></script>" %>
 <% } %>
+
 <script src="js/news.js"></script>
                 

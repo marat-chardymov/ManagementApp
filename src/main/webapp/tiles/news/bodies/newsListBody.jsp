@@ -28,6 +28,7 @@
         <html:submit styleClass="btn btn-primary"><bean:message key="buttons.delete"/></html:submit>
     </html:form>
 </div>
+<%-- switch js to appropriate localized version --%>
 <% if(((Locale)request.getSession().getAttribute("org.apache.struts.action.LOCALE")).getLanguage().equals("ru")){ %>
 <%="<script src='js/newsList_ru.js'></script>" %>
 <% }else{ %>
