@@ -1,7 +1,8 @@
+<%@ page import="java.util.Locale" %>
 <%@ include file="/tiles/libs.jsp" %>
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
-<script src="js/newsList.js"></script>
+
 <div class="col-md-9 column">
     <html:form action="/NewsAction.do?action=deleteList" styleId="newsForm">
         <c:forEach items="${newsForm.newsList}" var="news">
@@ -27,3 +28,8 @@
         <html:submit styleClass="btn btn-primary"><bean:message key="buttons.delete"/></html:submit>
     </html:form>
 </div>
+<% if(((Locale)request.getSession().getAttribute("org.apache.struts.action.LOCALE")).getLanguage().equals("ru")){ %>
+<%="<script src='js/newsList_ru.js'></script>" %>
+<% }else{ %>
+<%=" <script src='js/newsList.js'></script>" %>
+<% } %>

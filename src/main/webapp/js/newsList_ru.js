@@ -9,12 +9,12 @@ $(document).ready(function () {
         },
         messages: {
             'selectedItems': {
-                required: "You must check at least 1 news to delete",
+                required: "Отметьте хотя бы одну новость для удаления",
                 maxlength: "Check no more than {0} boxes"
             }
         },
         submitHandler: function(form) {
-            if (confirm('Are you sure?')) {
+            if (confirm('Вы действительно хотите удалить выбранные новости?')) {
                 form.submit();
             }
         },
