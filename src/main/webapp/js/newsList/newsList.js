@@ -3,18 +3,16 @@ $(document).ready(function () {
     $('#newsForm').validate({ // initialize the plugin
         rules: {
             'selectedItems': {
-                required: true,
-                maxlength: 2
+                required: true
             }
         },
         messages: {
             'selectedItems': {
-                required: "Отметьте хотя бы одну новость для удаления",
-                maxlength: "Check no more than {0} boxes"
+                required: "You must check at least 1 news to delete"
             }
         },
         submitHandler: function(form) {
-            if (confirm('Вы действительно хотите удалить выбранные новости?')) {
+            if (confirm('Are you sure?')) {
                 form.submit();
             }
         },

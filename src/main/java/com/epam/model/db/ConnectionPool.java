@@ -14,7 +14,6 @@ import java.util.concurrent.TimeUnit;
 
 public class ConnectionPool {
 
-    private static final Logger LOG = Logger.getLogger(ConnectionPool.class.getName());
     private LinkedBlockingDeque<Connection> connections = new LinkedBlockingDeque<Connection>();
     //pool parameters
     private String driverClassName;
@@ -52,8 +51,6 @@ public class ConnectionPool {
                     jdbcUrl, username,
                     password);
         } catch (SQLException ex) {
-            LOG.log(Level.ERROR, "Exception in ConnectionPool.createConnection",
-                    ex);
             throw new AppConnectionException("Exception in ConnectionPool.createConnection()", ex);
         }
     }
@@ -64,7 +61,6 @@ public class ConnectionPool {
         try {
             Class.forName(driverClassName);
         } catch (ClassNotFoundException ex) {
-            LOG.log(Level.ERROR, "Exception in ConnectionPool.init():", ex);
             throw new AppConnectionException("Exception in ConnectionPool.init():", ex);
         }
         int poolSize= Integer.parseInt(initPoolSize);
@@ -83,7 +79,6 @@ public class ConnectionPool {
             }
             return connection;
         } catch (InterruptedException ex) {
-            LOG.log(Level.ERROR, "can't get connection cause InterruptedException in pool.poll()", ex);
             return getConnection();
         }
     }
@@ -95,19 +90,18 @@ public class ConnectionPool {
                 connections.add(connection);
             }
         } catch (SQLException ex) {
-            LOG.log(Level.ERROR, "can't release connection; isClosed() check failed", ex);
             throw new AppConnectionException("can't release connection; isClosed() check failed",ex);
         }
     }
 
 
-    public void destroy() {
+    public void destroy() throws AppConnectionException {
         for (Iterator<Connection> it = connections.iterator(); it.hasNext();) {
             Connection c = it.next();
             try {
                 c.close();
             } catch (SQLException ex) {
-                LOG.log(Level.ERROR, "Exception in DatabasePool.destroy:", ex);
+                throw new AppConnectionException("connection close() failed",ex);
             }
         }
         connections.removeAll(connections);

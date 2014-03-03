@@ -43,7 +43,7 @@
 
 <%-- switch js to appropriate localized version --%>
 <% if(((Locale)request.getSession().getAttribute("org.apache.struts.action.LOCALE")).getLanguage().equals("ru")){ %>
-<%="<script src='js/viewNews_ru.js'></script>" %>
+<%="<script src='js/viewNews/viewNews_ru.js'></script>" %>
 <% }else{ %>
-<%=" <script src='js/viewNews.js'></script>" %>
+<%=" <script src='js/viewNews/viewNews.js'></script>" %>
 <% } %>

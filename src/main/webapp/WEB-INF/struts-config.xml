@@ -9,6 +9,14 @@
         <form-bean name="newsForm" type="com.epam.forms.NewsForm"/>
     </form-beans>
 
+    <global-exceptions>
+        <exception
+                key="error.global.message"
+                type="java.lang.Exception"
+                handler="com.epam.exceptions.AppCustomExceptionHandler"
+                path="/error.jsp" />
+    </global-exceptions>
+
     <action-mappings>
         <action path="/NewsAction"
                 type="org.springframework.web.struts.DelegatingActionProxy"

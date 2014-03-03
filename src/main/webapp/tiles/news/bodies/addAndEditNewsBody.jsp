@@ -63,5 +63,5 @@
 <%= "<script src='js/lib/date-picker/bootstrap-datepicker.ru.js'></script>" %>
 <% } %>
 
-<script src="js/news.js"></script>
+<script src="js/editNews/news.js"></script>
                 

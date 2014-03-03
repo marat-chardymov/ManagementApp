@@ -30,7 +30,7 @@
 </div>
 <%-- switch js to appropriate localized version --%>
 <% if(((Locale)request.getSession().getAttribute("org.apache.struts.action.LOCALE")).getLanguage().equals("ru")){ %>
-<%="<script src='js/newsList_ru.js'></script>" %>
+<%="<script src='js/newsList/newsList_ru.js'></script>" %>
 <% }else{ %>
-<%=" <script src='js/newsList.js'></script>" %>
+<%=" <script src='js/newsList/newsList.js'></script>" %>
 <% } %>
