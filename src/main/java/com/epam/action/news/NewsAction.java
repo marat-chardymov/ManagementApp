@@ -57,8 +57,9 @@ public final class NewsAction extends DispatchAction {
 
     public ActionForward delete(ActionMapping mapping, ActionForm form,
                                 HttpServletRequest request, HttpServletResponse response) throws AppActionException {
+        NewsForm newsForm = (NewsForm) form;
         INewsDAO newsDAO = getNewsDAO();
-        int id = Integer.parseInt(request.getParameter("id"));
+        int id = newsForm.getNews().getId();
         try {
             newsDAO.delete(id);
         } catch (AppDAOException e) {
@@ -81,14 +82,14 @@ public final class NewsAction extends DispatchAction {
     public ActionForward edit(ActionMapping mapping, ActionForm form,
                               HttpServletRequest request, HttpServletResponse response) throws AppActionException {
         INewsDAO newsDAO = getNewsDAO();
-        int id = Integer.parseInt(request.getParameter("id"));
+        NewsForm newsForm = (NewsForm) form;
+        int id = newsForm.getNews().getId();
         News news = null;
         try {
             news = newsDAO.read(id);
         } catch (AppDAOException e) {
             throw new AppActionException("NewsAction exception on read()", e);
         }
-        NewsForm newsForm = (NewsForm) form;
         newsForm.setNews(news);
         return mapping.findForward("successEdit");
     }
@@ -99,16 +100,14 @@ public final class NewsAction extends DispatchAction {
         NewsForm newsForm = (NewsForm) form;
         News news = newsForm.getNews();
         //if id exists we update current news, else - add new
-        if (!request.getParameter("id").isEmpty()) {
-            int id = Integer.parseInt(request.getParameter("id"));
-
-            news.setId(id);
+        int newsId=news.getId();
+        if (newsId!=0) {
             try {
                 newsDAO.update(news);
             } catch (AppDAOException e) {
                 throw new AppActionException("NewsAction exception on save()", e);
             }
-            return new ActionForward("NewsAction.do?action=view&id="+news.getId(),true);
+            return new ActionForward("NewsAction.do?action=view",true);
         } else {
             try {
                 newsDAO.save(news);
@@ -116,21 +115,22 @@ public final class NewsAction extends DispatchAction {
                 throw new AppActionException("NewsAction exception on save()", e);
             }
             form.reset(mapping, request);
-            return new ActionForward("NewsAction.do?action=view&id="+news.getId(),true);
+            newsForm.getNews().setId(news.getId());
+            return new ActionForward("NewsAction.do?action=view",true);
         }
     }
 
     public ActionForward view(ActionMapping mapping, ActionForm form,
                               HttpServletRequest request, HttpServletResponse response) throws ParseException, AppActionException {
         INewsDAO newsDAO = getNewsDAO();
-        int id = Integer.parseInt(request.getParameter("id"));
+        NewsForm newsForm = (NewsForm) form;
+        int id = newsForm.getNews().getId();
         News news = null;
         try {
             news = newsDAO.read(id);
         } catch (AppDAOException e) {
             throw new AppActionException("NewsAction exception on view()", e);
         }
-        NewsForm newsForm = (NewsForm) form;
         newsForm.setNews(news);
         return mapping.findForward("successView");
     }

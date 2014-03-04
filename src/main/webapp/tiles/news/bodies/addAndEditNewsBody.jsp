@@ -1,7 +1,8 @@
 <%@ page import="java.util.Locale" %>
 <%@ include file="/tiles/libs.jsp" %>
 <div class="col-md-9 column">
-    <html:form action="/NewsAction.do?action=save&id=${param.id}" styleClass="form-horizontal" styleId="newsForm">
+    <html:form action="/NewsAction.do?action=save" styleClass="form-horizontal" styleId="newsForm">
+        <html:hidden property="news.id" name="newsForm" value="${newsForm.news.id}"/>
         <%-- title--%>
         <div class="form-group">
             <label for="title" class="col-sm-2 control-label"><bean:message
@@ -58,7 +59,7 @@
     </html:form>
 </div>
 <%-- switch js to appropriate localized version --%>
-<% if(((Locale)request.getSession().getAttribute("org.apache.struts.action.LOCALE")).getLanguage().equals("ru")){ %>
+<% if (((Locale) request.getSession().getAttribute("org.apache.struts.action.LOCALE")).getLanguage().equals("ru")) { %>
 <%= "<script src='js/lib/jquery_validation/messages_ru.js'></script>" %>
 <%= "<script src='js/lib/date-picker/bootstrap-datepicker.ru.js'></script>" %>
 <% } %>

@@ -38,8 +38,15 @@
     <br>
 
     <div id="buttons">
-        <html:link action="/NewsAction.do?action=edit&id=${param.id}" styleClass="btn btn-primary"><bean:message key="buttons.edit"/></html:link>
-        <html:link action="/NewsAction.do?action=delete&id=${param.id}" styleClass="btn btn-primary" styleId="deleteBtn"><bean:message key="buttons.delete"/></html:link>
+        <bean:define id="id" property="id" value="${newsForm.news.id}"/>
+        <html:link action="NewsAction.do?action=edit" paramId="id"
+                   paramName="id" styleClass="btn btn-primary">
+            <bean:message key="buttons.edit"/>
+        </html:link>
+        <html:link action="NewsAction.do?action=delete" paramId="id"
+                   paramName="id" styleClass="btn btn-primary">
+            <bean:message key="buttons.delete"/>
+        </html:link>
     </div>
 
 </div>

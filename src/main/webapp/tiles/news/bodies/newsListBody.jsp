@@ -11,7 +11,7 @@
             <div class="newsBlock">
                 <span>
                     <h2 class="title">
-                        ${news.title}
+                            ${news.title}
                     </h2>
 
                     <span class="date">
@@ -24,10 +24,15 @@
                 </p>
 
                 <div class="RUDbuttons">
-                    <html:link action="/NewsAction.do?action=view&id=${news.id}"><bean:message
-                            key="links.view"/></html:link>
-                    <html:link action="/NewsAction.do?action=edit&id=${news.id}"><bean:message
-                            key="links.edit"/></html:link>
+                    <bean:define id="id" property="news.id" value="${news.id}"/>
+                    <html:link action="NewsAction.do?action=view" paramId="news.id"
+                               paramName="id">
+                        <bean:message key="links.view"/>
+                    </html:link>
+                    <html:link action="NewsAction.do?action=edit" paramId="news.id"
+                               paramName="id">
+                        <bean:message key="links.edit"/>
+                    </html:link>
                     <html:multibox property="selectedItems" value="${news.id}"/>
                 </div>
             </div>
