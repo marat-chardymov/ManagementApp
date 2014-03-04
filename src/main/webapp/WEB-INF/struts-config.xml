@@ -27,7 +27,6 @@
             <forward name="successAdd" path="/addAndEditNews.jsp"/>
             <forward name="successView" path="/viewNews.jsp"/>
             <forward name="successEdit" path="/addAndEditNews.jsp"/>
-            <forward name="successSave" path="/NewsAction.do?action=list" redirect="true"/>
         </action>
         <action path="/locale"
                 type="org.springframework.web.struts.DelegatingActionProxy"

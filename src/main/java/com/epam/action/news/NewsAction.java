@@ -110,7 +110,7 @@ public class NewsAction extends DispatchAction {
             } catch (AppDAOException e) {
                 throw new AppActionException("NewsAction exception on save()", e);
             }
-            return mapping.findForward("successSave");
+            return new ActionForward("NewsAction.do?action=view&id="+news.getId(),true);
         } else {
             try {
                 newsDAO.save(news);
@@ -118,7 +118,7 @@ public class NewsAction extends DispatchAction {
                 throw new AppActionException("NewsAction exception on save()", e);
             }
             form.reset(mapping, request);
-            return mapping.findForward("successSave");
+            return new ActionForward("NewsAction.do?action=view&id="+news.getId(),true);
         }
     }
 

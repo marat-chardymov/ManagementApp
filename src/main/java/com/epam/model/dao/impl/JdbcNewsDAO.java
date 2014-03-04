@@ -30,7 +30,7 @@ public class JdbcNewsDAO extends AbstractDAO implements INewsDAO {
             ps.setString(1, news.getTitle());
             ps.setString(2, news.getBrief());
             ps.setString(3, news.getContent());
-            ps.setDate(4, new java.sql.Date(news.getCreatedAt().getTime()));
+            ps.setDate(4, news.getCreatedAt());
             //we are trying to get id of inserted record
             ps.executeUpdate();
             rs = ps.getGeneratedKeys();
