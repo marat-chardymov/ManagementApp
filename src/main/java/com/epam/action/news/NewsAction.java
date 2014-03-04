@@ -16,7 +16,7 @@ import java.text.ParseException;
 import java.util.Date;
 import java.util.List;
 
-public class NewsAction extends DispatchAction {
+public final class NewsAction extends DispatchAction {
 
     private INewsDAO newsDAO;
 
@@ -48,9 +48,7 @@ public class NewsAction extends DispatchAction {
         NewsForm newsForm = (NewsForm) form;
         int[] deleteIds = newsForm.getSelectedItems();
         try {
-            for (int id : deleteIds) {
-                newsDAO.delete(id);
-            }
+            newsDAO.deleteList(deleteIds);
         } catch (AppDAOException e) {
             throw new AppActionException("NewsAction exception on deleteList()", e);
         }

@@ -15,9 +15,11 @@ public interface INewsDAO {
 
     public News read(int id) throws AppDAOException;
 
-    void update(News news) throws AppDAOException;
+    public void update(News news) throws AppDAOException;
 
-    void delete(int id) throws AppDAOException;
+    public void delete(int id) throws AppDAOException;
 
-    List<News> findAll() throws AppDAOException;
+    public void deleteList(int[] ids) throws AppDAOException;
+
+    public List<News> findAll() throws AppDAOException;
 }

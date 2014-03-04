@@ -24,7 +24,7 @@ public class AppCustomExceptionHandler extends ExceptionHandler {
 
         //log the error message
         logger.error(ex);
-
+        ex.printStackTrace();
         return super.execute(ex, ec, mapping, formInstance, request, response);
     }
 }

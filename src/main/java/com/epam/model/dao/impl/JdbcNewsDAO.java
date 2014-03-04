@@ -17,6 +17,7 @@ public class JdbcNewsDAO extends AbstractDAO implements INewsDAO {
     private static final String READ_SQL = "SELECT id,title,brief,content,created_at FROM news WHERE ID=?";
     private static final String UPDATE_SQL = "UPDATE news SET title=?,brief=?,content=?,created_at=? WHERE id=?";
     private static final String DELETE_SQL = "DELETE FROM news WHERE id=?";
+    private static final String DELETE_LIST_SQL = "DELETE FROM news WHERE id IN ";
     private static final String FIND_ALL_SQL = "SELECT * FROM NEWS ORDER BY created_at DESC";
 
     @Override
@@ -26,7 +27,7 @@ public class JdbcNewsDAO extends AbstractDAO implements INewsDAO {
         ResultSet rs = null;
         try {
             connection = super.getConnection();
-            ps = connection.prepareStatement(SAVE_SQL,new String[] {"id"});
+            ps = connection.prepareStatement(SAVE_SQL, new String[]{"id"});
             ps.setString(1, news.getTitle());
             ps.setString(2, news.getBrief());
             ps.setString(3, news.getContent());
@@ -35,7 +36,7 @@ public class JdbcNewsDAO extends AbstractDAO implements INewsDAO {
             ps.executeUpdate();
             rs = ps.getGeneratedKeys();
             if (rs.next()) {
-                int idInt=rs.getInt(1);
+                int idInt = rs.getInt(1);
                 news.setId(idInt);
             } else {
                 throw new AppDAOException("Creating news failed, no generated key obtained.");
@@ -105,6 +106,37 @@ public class JdbcNewsDAO extends AbstractDAO implements INewsDAO {
             ps.executeUpdate();
         } catch (SQLException e) {
             throw new AppDAOException("delete news failed", e);
+        } finally {
+            super.closeSC(ps, connection);
+        }
+    }
+
+    @Override
+    public void deleteList(int[] ids) throws AppDAOException {
+        Connection connection = null;
+        PreparedStatement ps = null;
+
+        //build sql string
+        StringBuilder builder = new StringBuilder(DELETE_LIST_SQL);
+        builder.append("(");
+        int initLength = builder.length();
+        for (int i : ids) {
+            builder.append("?");
+            if (builder.length() != initLength + ids.length * 2 - 1) {
+                builder.append(",");
+            }
+        }
+        builder.append(")");
+
+        try {
+            connection = super.getConnection();
+            ps = connection.prepareStatement(builder.toString());
+            for (int i = 1; i <= ids.length; i++) {
+                ps.setInt(i, ids[i-1]);
+            }
+            ps.executeUpdate();
+        } catch (SQLException e) {
+            throw new AppDAOException("delete news list failed", e);
         } finally {
             super.closeSC(ps, connection);
         }
