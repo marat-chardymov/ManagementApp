@@ -1,12 +1,24 @@
 .date{
   float:right;
+    padding-top: 23px;
 }
 h2{
     display: inline;
 }
-.RUDbuttons input{
-
+h2.title{
+    display: inline-block;
+    width: 85%;
+}
+.RUDbuttons{
+    float: right;
 }
 .newsBlock{
-    margin-bottom: 30px;
+    margin-bottom: 80px;
+    word-wrap: break-word;
+}
+#deleteBtn{
+    float: right;
+}
+.brief{
+    width:85%;
 }
