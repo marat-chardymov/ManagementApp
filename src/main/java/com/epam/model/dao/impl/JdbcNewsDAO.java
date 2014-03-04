@@ -26,19 +26,20 @@ public class JdbcNewsDAO extends AbstractDAO implements INewsDAO {
         ResultSet rs = null;
         try {
             connection = super.getConnection();
-            ps = connection.prepareStatement(SAVE_SQL);
+            ps = connection.prepareStatement(SAVE_SQL,new String[] {"id"});
             ps.setString(1, news.getTitle());
             ps.setString(2, news.getBrief());
             ps.setString(3, news.getContent());
             ps.setDate(4, new java.sql.Date(news.getCreatedAt().getTime()));
             //we are trying to get id of inserted record
             ps.executeUpdate();
-//            rs = ps.getGeneratedKeys();
-//            if (rs.next()) {
-//                news.setId(rs.getInt(1));
-//            } else {
-//                throw new AppDAOException("Creating news failed, no generated key obtained.");
-//            }
+            rs = ps.getGeneratedKeys();
+            if (rs.next()) {
+                int idInt=rs.getInt(1);
+                news.setId(idInt);
+            } else {
+                throw new AppDAOException("Creating news failed, no generated key obtained.");
+            }
         } catch (SQLException e) {
             throw new AppDAOException("save news failed", e);
         } finally {

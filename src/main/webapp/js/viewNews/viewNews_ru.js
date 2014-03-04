@@ -1,3 +1,3 @@
 $('#deleteBtn').on('click', function () {
-    return confirm('Вы уверены?');
+    return confirm('Вы действительно хотите удалить эту новость?');
 });

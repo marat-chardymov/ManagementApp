@@ -12,7 +12,7 @@ $(document).ready(function () {
             }
         },
         submitHandler: function(form) {
-            if (confirm('Are you sure?')) {
+            if (confirm('Do you really want to delete these news?')) {
                 form.submit();
             }
         },
