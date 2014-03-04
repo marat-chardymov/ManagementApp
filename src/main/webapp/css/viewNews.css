@@ -1,4 +1,8 @@
 #content{
     border: 1px solid #eee;
     padding: 30px;
+    word-wrap: break-word;
+}
+#buttons{
+    float: right;
 }

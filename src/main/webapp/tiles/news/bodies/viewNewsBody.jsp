@@ -1,5 +1,8 @@
 <%@ page import="java.util.Locale" %>
 <%@ include file="/tiles/libs.jsp" %>
+
+<link href="css/viewNews.css" rel="stylesheet">
+
 <div class="col-md-9 column " id="content">
     <div class="row">
         <label class="col-md-2"><bean:message key="newsPage.title"/></label>
@@ -34,7 +37,7 @@
     </div>
     <br>
 
-    <div>
+    <div id="buttons">
         <html:link action="/NewsAction.do?action=edit&id=${param.id}" styleClass="btn btn-primary"><bean:message key="buttons.edit"/></html:link>
         <html:link action="/NewsAction.do?action=delete&id=${param.id}" styleClass="btn btn-primary" styleId="deleteBtn"><bean:message key="buttons.delete"/></html:link>
     </div>
