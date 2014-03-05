@@ -15,8 +15,8 @@
                 <h1>
                     <bean:message key="header.title"/>
                     <div class="locale">
-                        <h4><html:link page="/locale.do?method=english">English</html:link>
-                            <html:link page="/locale.do?method=russian">Русский</html:link>
+                        <h4><html:link page="/locale.do?loc=english">English</html:link>
+                            <html:link page="/locale.do?loc=russian">Русский</html:link>
                         </h4>
                     </div>
                 </h1>
