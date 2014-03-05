@@ -7,14 +7,18 @@ import org.apache.log4j.Logger;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.Iterator;
+import java.util.List;
 import java.util.Properties;
 import java.util.concurrent.LinkedBlockingDeque;
+import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 public class ConnectionPool {
 
-    private LinkedBlockingDeque<Connection> connections = new LinkedBlockingDeque<Connection>();
+    private LinkedBlockingQueue<Connection> vacant = new LinkedBlockingQueue<Connection>();
+    private List<Connection> all = new ArrayList<Connection>();
     //pool parameters
     private String driverClassName;
     private String jdbcUrl;
@@ -63,48 +67,37 @@ public class ConnectionPool {
         } catch (ClassNotFoundException ex) {
             throw new AppConnectionException("Exception in ConnectionPool.init():", ex);
         }
-        int poolSize= Integer.parseInt(initPoolSize);
-        for (int i = 0; i < poolSize ; i++) {
-            connections.add(createConnection());
+        int poolSize = Integer.parseInt(initPoolSize);
+        for (int i = 0; i < poolSize; i++) {
+            Connection connection = createConnection();
+            vacant.add(connection);
+            all.add(connection);
         }
     }
 
 
     public Connection getConnection() throws AppConnectionException {
         try {
-            Connection connection = connections.poll(500, TimeUnit.MILLISECONDS);
-            if (connection == null) {
-                connections.add(createConnection());
-                connection = connections.poll();
-            }
-            return connection;
+            return vacant.take();
         } catch (InterruptedException ex) {
-            return getConnection();
+            throw new AppConnectionException("InterruptedException in ConnectionPool.getConnection(): interrupt while waiting", ex);
         }
     }
-
-
-    public void release(Connection connection) throws AppConnectionException{
-        try {
-            if (!connection.isClosed()) {
-                connections.add(connection);
-            }
-        } catch (SQLException ex) {
-            throw new AppConnectionException("can't release connection; isClosed() check failed",ex);
-        }
+    
+    public void release(Connection connection) throws AppConnectionException {
+        vacant.add(connection);
     }
 
 
     public void destroy() throws AppConnectionException {
-        for (Iterator<Connection> it = connections.iterator(); it.hasNext();) {
-            Connection c = it.next();
+        for (Connection connection : all) {
             try {
-                c.close();
+                connection.close();
             } catch (SQLException ex) {
-                throw new AppConnectionException("connection close() failed",ex);
+                throw new AppConnectionException("connection close() failed", ex);
             }
         }
-        connections.removeAll(connections);
+        all.removeAll(all);
     }
 
 }
