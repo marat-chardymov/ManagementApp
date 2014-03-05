@@ -5,19 +5,25 @@ $('.datepicker').datepicker({
 });
 
 $("#newsForm").validate();
-$( "#title" ).rules( "add", {
+$("#title").rules("add", {
     required: true,
     maxlength: 100
 });
-$( "#date" ).rules( "add", {
+$("#date").rules("add", {
     required: true,
     dateISO: true
 });
-$( "#brief" ).rules( "add", {
+$("#brief").rules("add", {
     required: true,
     maxlength: 500
 });
-$( "#content" ).rules( "add", {
+$("#content").rules("add", {
     required: true,
     maxlength: 2048
+});
+
+jQuery.extend(jQuery.validator.messages, {
+    required: messages.required,
+    maxlength: jQuery.validator.format(messages.maxlength+" {0}"),
+    dateISO: messages.dateISO
 });

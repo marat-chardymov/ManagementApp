@@ -83,7 +83,7 @@ public class ConnectionPool {
             throw new AppConnectionException("InterruptedException in ConnectionPool.getConnection(): interrupt while waiting", ex);
         }
     }
-    
+
     public void release(Connection connection) throws AppConnectionException {
         vacant.add(connection);
     }
