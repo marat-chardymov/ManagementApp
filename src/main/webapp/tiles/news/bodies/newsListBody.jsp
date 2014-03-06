@@ -40,9 +40,6 @@
         <html:submit styleClass="btn btn-primary" styleId="deleteBtn"><bean:message key="buttons.delete"/></html:submit>
     </html:form>
 </div>
-<%-- switch js to appropriate localized version --%>
-<% if (((Locale) request.getSession().getAttribute("org.apache.struts.action.LOCALE")).getLanguage().equals("ru")) { %>
-<%="<script src='js/newsList/newsList_ru.js'></script>" %>
-<% } else { %>
-<%=" <script src='js/newsList/newsList.js'></script>" %>
-<% } %>
+<%-- localize_js.jsp contains localization variables --%>
+<script type="text/javascript" src="js/localize_js.jsp"></script>
+<script src='js/newsList/newsList.js'></script>

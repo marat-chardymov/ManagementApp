@@ -8,11 +8,11 @@ $(document).ready(function () {
         },
         messages: {
             'selectedItems': {
-                required: "You must check at least 1 news to delete"
+                required: newsList.atLeastOne
             }
         },
         submitHandler: function(form) {
-            if (confirm('Do you really want to delete these news?')) {
+            if (confirm(newsList.deleteConfirm)) {
                 form.submit();
             }
         },

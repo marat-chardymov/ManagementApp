@@ -58,10 +58,11 @@
         </div>
     </html:form>
 </div>
+<script src="js/lib/date-picker/bootstrap-datepicker.js"></script>
 <%-- localize_js.jsp contains localization messages for validation and datepicker --%>
-<script type="text/javascript" src="js/editNews/localize_js.jsp"></script>
-
+<script type="text/javascript" src="js/localize_js.jsp"></script>
 <script src='js/lib/date-picker/bootstrap-datepicker.ru.js'></script>
+
 <script src="js/editNews/news.js"></script>
 
 

@@ -4,8 +4,6 @@
 
     <link href="css/editNews.css" rel="stylesheet">
     <link href="css/lib/datepicker3.css" rel="stylesheet">
-
-    <script src="js/lib/date-picker/bootstrap-datepicker.js"></script>
     <html:base/>
 
 <div class="container">
