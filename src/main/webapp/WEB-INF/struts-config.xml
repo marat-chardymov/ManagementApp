@@ -21,12 +21,10 @@
         <action path="/NewsAction"
                 type="org.springframework.web.struts.DelegatingActionProxy"
                 parameter="action" name="newsForm">
-            <forward name="successList" path="/newsList.jsp"/>
-            <forward name="successDeleteList" path="/NewsAction.do?action=list" redirect="true"/>
-            <forward name="successDelete" path="/NewsAction.do?action=list" redirect="true"/>
-            <forward name="successAdd" path="/addAndEditNews.jsp"/>
-            <forward name="successView" path="/viewNews.jsp"/>
-            <forward name="successEdit" path="/addAndEditNews.jsp"/>
+            <forward name="successList" path="news-list"/>
+            <forward name="successAdd" path="edit-news"/>
+            <forward name="successView" path="view-news"/>
+            <forward name="successEdit" path="edit-news"/>
         </action>
         <action path="/locale"
                 type="org.springframework.web.struts.DelegatingActionProxy"

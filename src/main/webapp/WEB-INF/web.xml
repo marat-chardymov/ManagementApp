@@ -17,6 +17,10 @@
                 /WEB-INF/struts-config.xml
             </param-value>
         </init-param>
+        <init-param>
+            <param-name>chainConfig</param-name>
+            <param-value>org/apache/struts/tiles/chain-config.xml</param-value>
+        </init-param>
         <load-on-startup>1</load-on-startup>
     </servlet>
 

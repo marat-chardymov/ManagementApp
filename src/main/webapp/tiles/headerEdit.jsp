@@ -2,8 +2,8 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 
-    <link href="css/editNews.css" rel="stylesheet">
-    <link href="css/lib/datepicker3.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/editNews.css" rel="stylesheet">
+    <link href="${pageContext.request.contextPath}/css/lib/datepicker3.css" rel="stylesheet">
     <html:base/>
 
 <div class="container">

@@ -52,7 +52,7 @@ public final class NewsAction extends DispatchAction {
         } catch (AppDAOException e) {
             throw new AppActionException("NewsAction exception on deleteList()", e);
         }
-        return mapping.findForward("successDeleteList");
+        return new ActionForward("NewsAction.do?action=list",true);
     }
 
     public ActionForward delete(ActionMapping mapping, ActionForm form,
@@ -65,7 +65,7 @@ public final class NewsAction extends DispatchAction {
         } catch (AppDAOException e) {
             throw new AppActionException("NewsAction exception on delete()", e);
         }
-        return mapping.findForward("successDelete");
+        return new ActionForward("NewsAction.do?action=list",true);
     }
 
     public ActionForward add(ActionMapping mapping, ActionForm form,

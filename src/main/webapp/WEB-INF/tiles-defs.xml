@@ -3,11 +3,23 @@
         "http://struts.apache.org/dtds/tiles-config_1_3.dtd">
 <tiles-definitions>
 
-    <definition name="news-template" path="/tiles/common-layout.jsp">
+    <definition name="base-template" path="/layouts/common-layout.jsp">
         <put name="header" value="/tiles/header.jsp" />
         <put name="menu" value="/tiles/menu.jsp" />
         <put name="footer" value="/tiles/footer.jsp" />
     </definition>
+
+    <definition name="edit-news" extends="base-template">
+        <put name="header" value="/tiles/headerEdit.jsp" />
+        <put name="body" value="/tiles/news/bodies/addAndEditNewsBody.jsp" />
+    </definition>
+    <definition name="news-list" extends="base-template">
+        <put name="body" value="/tiles/news/bodies/newsListBody.jsp" />
+    </definition>
+    <definition name="view-news" extends="base-template">
+        <put name="body" value="/tiles/news/bodies/viewNewsBody.jsp" />
+    </definition>
+
 
 
 </tiles-definitions>

@@ -6,8 +6,8 @@
 <html>
 <head>
     <title><bean:message key="errorPage.title"/></title>
-    <link href="<%=request.getContextPath()%>/css/lib/bootstrap.min.css" rel="stylesheet"/>
-    <link href="<%=request.getContextPath()%>/css/404.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/css/lib/bootstrap.min.css" rel="stylesheet"/>
+    <link href="${pageContext.request.contextPath}/css/error_page.css" rel="stylesheet"/>
 </head>
 <body>
 <div class="container">
@@ -21,7 +21,7 @@
         </p>
 
         <p>
-            <a href="<%=request.getContextPath()%>" class="btn btn-primary btn-large"><bean:message
+            <a href="${pageContext.request.contextPath}" class="btn btn-primary btn-large"><bean:message
                     key="errorPage.backToHome"/> »</a>
         </p>
     </div>

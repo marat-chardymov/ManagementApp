@@ -1,7 +1,7 @@
 <%@ page import="java.util.Locale" %>
 <%@ include file="/tiles/libs.jsp" %>
 
-<link href="css/viewNews.css" rel="stylesheet">
+<link href="${pageContext.request.contextPath}/css/viewNews.css" rel="stylesheet">
 
 <div class="col-md-9 column " id="content">
     <div class="row">
@@ -52,6 +52,6 @@
 </div>
 
 <%-- localize_js.jsp contains localization variables --%>
-<script type="text/javascript" src="js/localize_js.jsp"></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/localize_js.jsp"></script>
 
-<script src='js/viewNews/viewNews.js'></script>
+<script src='${pageContext.request.contextPath}/js/viewNews/viewNews.js'></script>

@@ -41,5 +41,5 @@
     </html:form>
 </div>
 <%-- localize_js.jsp contains localization variables --%>
-<script type="text/javascript" src="js/localize_js.jsp"></script>
-<script src='js/newsList/newsList.js'></script>
+<script type="text/javascript" src="${pageContext.request.contextPath}/js/localize_js.jsp"></script>
+<script src='${pageContext.request.contextPath}/js/newsList/newsList.js'></script>
