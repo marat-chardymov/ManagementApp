@@ -44,16 +44,14 @@
             <bean:message key="buttons.edit"/>
         </html:link>
         <html:link action="NewsAction.do?action=delete" paramId="id"
-                   paramName="id" styleClass="btn btn-primary">
+                   paramName="id" styleClass="btn btn-primary" styleId="deleteBtn">
             <bean:message key="buttons.delete"/>
         </html:link>
     </div>
 
 </div>
 
-<%-- switch js to appropriate localized version --%>
-<% if(((Locale)request.getSession().getAttribute("org.apache.struts.action.LOCALE")).getLanguage().equals("ru")){ %>
-<%="<script src='js/viewNews/viewNews_ru.js'></script>" %>
-<% }else{ %>
-<%=" <script src='js/viewNews/viewNews.js'></script>" %>
-<% } %>
+<%-- localize_js.jsp contains localization variables --%>
+<script type="text/javascript" src="js/localize_js.jsp"></script>
+
+<script src='js/viewNews/viewNews.js'></script>

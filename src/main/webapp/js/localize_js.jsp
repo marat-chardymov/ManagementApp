@@ -37,6 +37,9 @@
             atLeastOne: '<bean:message key="newsList.atLeastOne"/>',
             deleteConfirm: '<bean:message key="newsList.deleteConfirm"/>'
         }
+        var viewNews = {
+            deleteConfirm: '<bean:message key="viewNews.deleteConfirm"/>'
+        }
 
 
 
