@@ -11,7 +11,7 @@
             <div class="col-sm-8">
                     <%-- title input --%>
                 <html:text property="news.title" styleId="title"
-                           styleClass="form-control" value="${newsForm.news.title}"></html:text>
+                           styleClass="form-control" value="${newsForm.news.title}"/>
             </div>
         </div>
         <%-- date--%>
@@ -22,7 +22,7 @@
             <div class="col-sm-8">
                     <%-- date input --%>
                 <html:text property="news.createdAt" styleId="date"
-                           styleClass="datepicker" value="${newsForm.news.createdAt}"></html:text>
+                           styleClass="datepicker" value="${newsForm.news.createdAt}"/>
             </div>
         </div>
         <%-- brief --%>
