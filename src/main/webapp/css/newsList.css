@@ -1,24 +1,28 @@
 .date{
   float:right;
-    padding-top: 23px;
+    padding-right: 100px;
 }
 h2{
     display: inline;
 }
 h2.title{
-    display: inline-block;
     width: 85%;
 }
 .RUDbuttons{
     float: right;
+    padding-right: 100px;
 }
 .newsBlock{
+    padding-left: 60px;
+    padding-right: 60px;
+    padding-top: 60px;
     margin-bottom: 80px;
-    word-wrap: break-word;
+    word-break: break-all;
 }
 #deleteBtn{
     float: right;
+    margin-right: 160px;
 }
 .brief{
-    width:85%;
+    width:75%;
 }

@@ -17,9 +17,8 @@
         <put name="body" value="/tiles/news/bodies/newsListBody.jsp" />
     </definition>
     <definition name="view-news" extends="base-template">
+        <put name="header" value="/tiles/headerEdit.jsp" />
         <put name="body" value="/tiles/news/bodies/viewNewsBody.jsp" />
     </definition>
-
-
 
 </tiles-definitions>

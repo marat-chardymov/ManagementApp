@@ -1,6 +1,6 @@
 <%@ page import="java.util.Locale" %>
 <%@ include file="/tiles/libs.jsp" %>
-<div class="col-md-9 column">
+<link rel="stylesheet" href="${pageContext.request.contextPath}/css/lib/bootstrap.min.css"/>
     <html:form action="/NewsAction.do?action=save" styleClass="form-horizontal" styleId="newsForm">
         <html:hidden property="news.id" name="newsForm" value="${newsForm.news.id}"/>
         <%-- title--%>
@@ -11,7 +11,7 @@
             <div class="col-sm-8">
                     <%-- title input --%>
                 <html:text property="news.title" styleId="title"
-                           styleClass="form-control" value="${newsForm.news.title}"/>
+                           value="${newsForm.news.title}"/>
             </div>
         </div>
         <%-- date--%>
@@ -32,7 +32,7 @@
 
             <div class="col-sm-8">
                     <%-- brief textarea --%>
-                <html:textarea property="news.brief" styleId="brief" name="brief" styleClass="form-control required"
+                <html:textarea property="news.brief" styleId="brief" name="brief"
                                value="${newsForm.news.brief}"/>
             </div>
         </div>
@@ -43,21 +43,21 @@
 
             <div class="col-sm-8">
                     <%-- content textarea --%>
-                <html:textarea property="news.content" styleId="content" styleClass="form-control"
+                <html:textarea property="news.content" styleId="content"
                                value="${newsForm.news.content}" rows="10"/>
             </div>
         </div>
         <div class="form-group">
             <div class="col-sm-offset-2 col-sm-6">
-                <html:submit styleClass="btn btn-primary"><bean:message
+                <html:submit ><bean:message
                         key="buttons.save"/></html:submit>
-                <button class="btn btn-default" onclick="javascript:history.back();return false;">
+                <button onclick="javascript:history.back();return false;">
                     <bean:message key="buttons.cancel"/>
                 </button>
             </div>
         </div>
     </html:form>
-</div>
+
 <script src="${pageContext.request.contextPath}/js/lib/date-picker/bootstrap-datepicker.js"></script>
 <%-- localize_js.jsp contains localization messages for validation and datepicker --%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/localize_js.jsp"></script>

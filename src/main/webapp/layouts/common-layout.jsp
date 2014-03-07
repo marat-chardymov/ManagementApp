@@ -5,7 +5,6 @@
 <html>
 <head>
     <title></title>
-    <link href="css/lib/bootstrap.min.css" rel="stylesheet">
     <link href="css/app.css" rel="stylesheet">
     <meta charset="utf-8">
 
@@ -20,9 +19,26 @@
 
 </head>
 <body>
-<tiles:insert attribute="header"/>
-<tiles:insert attribute="menu"/>
-<tiles:insert attribute="body"/>
-<tiles:insert attribute="footer"/>
+<table id="main">
+    <tr>
+        <td colspan="2" id="header">
+            <tiles:insert attribute="header"/>
+        </td>
+    </tr>
+    <tr>
+        <td id="menu">
+            <tiles:insert attribute="menu"/>
+        </td>
+        <td id="body">
+            <tiles:insert attribute="body"/>
+        </td>
+    </tr>
+    <tr>
+        <td colspan="2" id="footer">
+            <tiles:insert attribute="footer"/>
+        </td>
+    </tr>
+</table>
+
 </body>
 </html>

@@ -8,18 +8,18 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
          pageEncoding="UTF-8" %>
 
-<div class="container">
-    <div class="row">
-        <div class="col-md-12 column">
-            <div class="page-header">
-                <h1>
-                    <bean:message key="header.title"/>
-                    <div class="locale">
-                        <h4><html:link page="/locale.do?loc=english">English</html:link>
-                            <html:link page="/locale.do?loc=russian">Русский</html:link>
-                        </h4>
-                    </div>
-                </h1>
-            </div>
-        </div>
-    </div>
+<div id="header_title">
+    <bean:message key="header.title"/>
+</div>
+
+
+<table id="locale">
+    <tr>
+        <td>
+            <html:link page="/locale.do?loc=english">English</html:link>
+        </td>
+        <td>
+            <html:link page="/locale.do?loc=russian">Русский</html:link>
+        </td>
+    </tr>
+</table>

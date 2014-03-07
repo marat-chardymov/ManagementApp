@@ -6,10 +6,10 @@
 </div>
 </div>
 
-<div class="row" id="footer">
-    <div class="col-md-12 column">
+
+    <span id="footer_text">
         Copyright © 2014. EPAM Systems. <bean:message key="footer.rights"/>
-    </div>
-</div>
+    </span>
+
 
 </div>
