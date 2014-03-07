@@ -30,7 +30,9 @@
             <tiles:insert attribute="menu"/>
         </td>
         <td id="body">
-            <tiles:insert attribute="body"/>
+            <div id="content_box">
+                <tiles:insert attribute="body"/>
+            </div>
         </td>
     </tr>
     <tr>

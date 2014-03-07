@@ -1,6 +1,5 @@
 <%@ page import="java.util.Locale" %>
 <%@ include file="/tiles/libs.jsp" %>
-<link rel="stylesheet" href="${pageContext.request.contextPath}/css/lib/bootstrap.min.css"/>
     <html:form action="/NewsAction.do?action=save" styleClass="form-horizontal" styleId="newsForm">
         <html:hidden property="news.id" name="newsForm" value="${newsForm.news.id}"/>
         <%-- title--%>

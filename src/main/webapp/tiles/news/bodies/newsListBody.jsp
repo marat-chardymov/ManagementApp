@@ -37,7 +37,7 @@
             </div>
         </div>
     </c:forEach>
-    <html:submit styleClass="btn btn-primary" styleId="deleteBtn"><bean:message key="buttons.delete"/></html:submit>
+    <html:submit styleId="deleteBtn"><bean:message key="buttons.delete"/></html:submit>
 </html:form>
 <%-- localize_js.jsp contains localization variables --%>
 <script type="text/javascript" src="${pageContext.request.contextPath}/js/localize_js.jsp"></script>
