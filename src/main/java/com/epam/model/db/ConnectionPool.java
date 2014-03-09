@@ -7,15 +7,16 @@ import org.apache.log4j.Logger;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.ArrayList;
-import java.util.Iterator;
-import java.util.List;
-import java.util.Properties;
+import java.util.*;
 import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
 public class ConnectionPool {
+
+    static {
+        Locale.setDefault(Locale.ENGLISH);
+    }
 
     private LinkedBlockingQueue<Connection> vacant = new LinkedBlockingQueue<Connection>();
     private List<Connection> all = new ArrayList<Connection>();

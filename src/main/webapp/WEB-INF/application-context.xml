@@ -4,10 +4,6 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
-    <bean id="newsDAO" class="com.epam.model.dao.impl.JdbcNewsDAO">
-        <property name="pool" ref="pool"/>
-    </bean>
-
     <bean id="pool" class="com.epam.model.db.ConnectionPool" init-method="init" destroy-method="destroy">
         <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
         <property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"/>
@@ -15,6 +11,12 @@
         <property name="password" value="sesame"/>
         <property name="initPoolSize" value="5"/>
     </bean>
+
+    <bean id="newsDAO" class="com.epam.model.dao.impl.JdbcNewsDAO">
+        <property name="pool" ref="pool"/>
+    </bean>
+
+
 
     <!-- Struts action beans -->
     <bean name="/NewsAction"

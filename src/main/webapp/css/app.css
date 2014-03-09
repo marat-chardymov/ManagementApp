@@ -16,13 +16,17 @@ input[type="submit"] {
 }
 
 #footer {
-    position: absolute;
-    width: 100%;
-    position: absolute;
-    bottom: 0;
+    /*position: absolute;*/
+    /*width: 100%;*/
+    /*position: absolute;*/
+    /*bottom: 0;*/
+
+
+}
+#footer_text{
     border: 2px solid black;
     text-align: center;
-
+    margin-top: 50px;
 }
 
 .errors {

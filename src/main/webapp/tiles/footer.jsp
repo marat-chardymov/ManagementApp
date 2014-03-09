@@ -7,9 +7,9 @@
 </div>
 
 
-    <span id="footer_text">
+    <div id="footer_text">
         Copyright © 2014. EPAM Systems. <bean:message key="footer.rights"/>
-    </span>
+    </div>
 
 
 </div>
