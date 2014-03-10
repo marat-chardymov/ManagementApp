@@ -1,8 +1,35 @@
-#content{
-    border: 1px solid #eee;
-    padding: 30px;
-    word-wrap: break-word;
+#content {
+    padding: 80px;
+    word-break: break-all;
 }
-#buttons{
+
+#buttons {
     float: right;
 }
+
+.contentLine {
+    display: inline;
+}
+label.in {
+    display: inline-block;
+    width: 80px;
+    text-align: left;
+    vertical-align: top;
+}
+table#view{
+    table-layout: fixed;
+    word-break: break-all;
+    padding: 100px;
+}
+
+td {
+    padding-top: .5em;
+    padding-bottom: .5em;
+}
+.btnLink{
+    border-radius: 3px;
+    border: 2px solid #6495ED;
+    background-color: #ffffff;
+    padding: 2px 15px 2px 15px;
+}
+​
