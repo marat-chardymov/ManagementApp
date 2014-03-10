@@ -1,14 +1,49 @@
-label{
+label {
     padding-right: 20px;
 }
-input{
+
+input {
     margin-bottom: 20px;
 }
-textarea{
+
+textarea {
     margin-bottom: 20px;
+}
+
+label.error {
+    margin-bottom: -10px;
+    margin-top: -10px;
+    color: #D44950;
+}
+
+#newsForm {
+    padding: 50px;
+}
+
+label.in {
+    display: inline-block;
+    width: 140px;
+    text-align: right;
+}
+
+​.inputField{
+    display: inline;
 }
 label.error{
-    margin-bottom:-10px;
-    margin-top:-10px;
-    color: #D44950;
+    display: inline;
+    margin-left: 10px;
+    vertical-align: top;
+}
+
+#briefLabel{
+    vertical-align: top;
+}
+#contentLabel{
+    vertical-align: top;
+}
+#buttons{
+    margin-left: 200px;
+}
+textarea{
+    width: 380px;
 }
