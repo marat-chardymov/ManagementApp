@@ -45,8 +45,10 @@
         </td>
         <td>
             <div id="buttons">
-                <input type="button" id="editBtn" class="btnLink" value="<bean:message key='buttons.edit'/>"/>
-                <input type="button" id="deleteBtn" class="btnLink" value="<bean:message key='buttons.delete'/>"/>
+                <html:link action="NewsAction.do?action=edit" styleClass="btnLink" style="text-decoration: none;">
+                    <bean:message key="buttons.edit"/></html:link>
+                <html:link action="NewsAction.do?action=delete" styleClass="btnLink">
+                    <bean:message key="buttons.delete"/></html:link>
             </div>
         </td>
     </tr>
