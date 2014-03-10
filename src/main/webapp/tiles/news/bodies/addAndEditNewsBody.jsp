@@ -48,14 +48,23 @@
                     <%-- content textarea --%>
                 <html:textarea property="news.content" styleId="content"
                                value="${newsForm.news.content}" rows="10"/>
+            </span>
     </div>
-    <div id="buttons">
-        <html:submit><bean:message
-                key="buttons.save"/></html:submit>
-        <button onclick="javascript:history.back();return false;">
-            <bean:message key="buttons.cancel"/>
-        </button>
+    <%-- buttons --%>
+    <div class="form-group">
+        <label for="content"class="in"></label>
+
+            <span class="inputField" id="buttons">
+                    <%-- buttons --%>
+                    <html:submit><bean:message
+                            key="buttons.save"/></html:submit>
+                    <button onclick="javascript:history.back();return false;">
+                        <bean:message key="buttons.cancel"/>
+                    </button>
+
+            </span>
     </div>
+
 
 
 </html:form>
