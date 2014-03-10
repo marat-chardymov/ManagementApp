@@ -88,6 +88,12 @@
             <groupId>org.springframework</groupId>
             <artifactId>spring-struts</artifactId>
             <version>3.2.7.RELEASE</version>
+            <exclusions>
+                <exclusion>
+                    <groupId>struts</groupId>
+                    <artifactId>struts</artifactId>
+                </exclusion>
+            </exclusions>
         </dependency>
 
         <!-- logging -->

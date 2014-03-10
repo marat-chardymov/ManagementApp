@@ -47,12 +47,15 @@ public final class NewsAction extends DispatchAction {
         INewsDAO newsDAO = getNewsDAO();
         NewsForm newsForm = (NewsForm) form;
         int[] deleteIds = newsForm.getSelectedItems();
+        List<News> newsList = null;
         try {
             newsDAO.deleteList(deleteIds);
+            //newsList = newsDAO.findAll();
         } catch (AppDAOException e) {
             throw new AppActionException("NewsAction exception on deleteList()", e);
         }
-        return new ActionForward("NewsAction.do?action=list",true);
+        //newsForm.setNewsList(newsList);
+        return mapping.findForward("successList");
     }
 
     public ActionForward delete(ActionMapping mapping, ActionForm form,
@@ -60,12 +63,15 @@ public final class NewsAction extends DispatchAction {
         NewsForm newsForm = (NewsForm) form;
         INewsDAO newsDAO = getNewsDAO();
         int id = newsForm.getNews().getId();
+        List<News> newsList = null;
         try {
             newsDAO.delete(id);
+            //newsList = newsDAO.findAll();
         } catch (AppDAOException e) {
             throw new AppActionException("NewsAction exception on delete()", e);
         }
-        return new ActionForward("NewsAction.do?action=list",true);
+        //newsForm.setNewsList(newsList);
+        return mapping.findForward("successList");
     }
 
     public ActionForward add(ActionMapping mapping, ActionForm form,
