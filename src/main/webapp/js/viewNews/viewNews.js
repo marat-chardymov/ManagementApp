@@ -1,3 +1,8 @@
 $('#deleteBtn').on('click', function () {
-    return confirm(viewNews.deleteConfirm);
+    if (confirm(viewNews.deleteConfirm)) {
+        document.location = 'NewsAction.do?action=delete';
+    }
+});
+$('#editBtn').on('click', function () {
+    document.location = 'NewsAction.do?action=edit';
 });
