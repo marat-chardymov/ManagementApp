@@ -130,3 +130,10 @@ button{
 #nav_list ul li{
     background-image: url(../images/circle.png);
 }
+.breadcrumb{
+    margin: 20px;
+    margin-left: 30px;
+    margin-bottom: 0px;
+}.breadcrumb a{
+     color: grey;
+ }

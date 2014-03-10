@@ -1,5 +1,9 @@
 <%@ page import="java.util.Locale" %>
 <%@ include file="/tiles/libs.jsp" %>
+<div class="breadcrumb"><a href="/newsAction.do?method=list"><bean:message
+        key="breadcrumb.news"/></a>>><bean:message
+        key="breadcrumb.newsAdd"/>
+</div>
 <html:form action="/NewsAction.do?action=save" styleClass="form-horizontal" styleId="newsForm">
     <html:hidden property="news.id" name="newsForm" value="${newsForm.news.id}"/>
     <%-- title--%>

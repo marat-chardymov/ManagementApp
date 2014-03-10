@@ -3,6 +3,10 @@
 
 <link href="${pageContext.request.contextPath}/css/viewNews.css" rel="stylesheet">
 
+<div class="breadcrumb"><a href="/newsAction.do?method=list"><bean:message
+        key="breadcrumb.news"/></a>>><bean:message
+        key="breadcrumb.newsView"/>
+</div>
 <table id="view">
     <tr>
         <td>
@@ -55,7 +59,6 @@
     </tr>
 </table>
 <br>
-
 
 
 <%-- localize_js.jsp contains localization variables --%>

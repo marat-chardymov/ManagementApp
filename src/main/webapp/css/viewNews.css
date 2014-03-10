@@ -20,6 +20,7 @@ table#view{
     table-layout: fixed;
     word-break: break-all;
     padding: 100px;
+    padding-top: 50px;
 }
 
 td {

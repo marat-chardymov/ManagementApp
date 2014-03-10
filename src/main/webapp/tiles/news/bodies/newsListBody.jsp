@@ -5,6 +5,10 @@
 
 <link href="css/newsList.css" rel="stylesheet">
 
+<div class="breadcrumb"><a href="/newsAction.do?method=list"><bean:message
+        key="breadcrumb.news"/></a>>><bean:message
+        key="breadcrumb.newsList"/>
+</div>
 
 <html:form action="/NewsAction.do?action=deleteList" styleId="newsForm">
     <c:forEach items="${newsForm.newsList}" var="news">
