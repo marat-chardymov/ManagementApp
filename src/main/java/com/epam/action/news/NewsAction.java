@@ -50,12 +50,12 @@ public final class NewsAction extends DispatchAction {
         List<News> newsList = null;
         try {
             newsDAO.deleteList(deleteIds);
-            //newsList = newsDAO.findAll();
+//            newsList = newsDAO.findAll();
         } catch (AppDAOException e) {
             throw new AppActionException("NewsAction exception on deleteList()", e);
         }
-        //newsForm.setNewsList(newsList);
-        return mapping.findForward("successList");
+//        newsForm.setNewsList(newsList);
+        return mapping.findForward("redirectList");
     }
 
     public ActionForward delete(ActionMapping mapping, ActionForm form,
@@ -66,12 +66,12 @@ public final class NewsAction extends DispatchAction {
         List<News> newsList = null;
         try {
             newsDAO.delete(id);
-            //newsList = newsDAO.findAll();
+//            newsList = newsDAO.findAll();
         } catch (AppDAOException e) {
             throw new AppActionException("NewsAction exception on delete()", e);
         }
-        //newsForm.setNewsList(newsList);
-        return mapping.findForward("successList");
+//        newsForm.setNewsList(newsList);
+        return mapping.findForward("redirectList");
     }
 
     public ActionForward add(ActionMapping mapping, ActionForm form,
@@ -113,16 +113,15 @@ public final class NewsAction extends DispatchAction {
             } catch (AppDAOException e) {
                 throw new AppActionException("NewsAction exception on save()", e);
             }
-            return new ActionForward("NewsAction.do?action=view",true);
+            return mapping.findForward("redirectView");
         } else {
             try {
                 newsDAO.save(news);
             } catch (AppDAOException e) {
                 throw new AppActionException("NewsAction exception on save()", e);
             }
-            form.reset(mapping, request);
             newsForm.getNews().setId(news.getId());
-            return new ActionForward("NewsAction.do?action=view",true);
+            return mapping.findForward("redirectView");
         }
     }
 
@@ -132,6 +131,7 @@ public final class NewsAction extends DispatchAction {
         NewsForm newsForm = (NewsForm) form;
         int id = newsForm.getNews().getId();
         News news = null;
+        //TODO: rewrite
         try {
             news = newsDAO.read(id);
         } catch (AppDAOException e) {

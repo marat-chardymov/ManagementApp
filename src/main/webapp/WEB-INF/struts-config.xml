@@ -14,16 +14,18 @@
                 key="error.global.message"
                 type="java.lang.Exception"
                 handler="com.epam.exceptions.AppCustomExceptionHandler"
-                path="/error.jsp" />
+                path="/error.jsp"/>
     </global-exceptions>
 
     <action-mappings>
         <action path="/NewsAction"
                 type="org.springframework.web.struts.DelegatingActionProxy"
                 parameter="action" name="newsForm">
-            <forward name="successList" path="news-list" redirect="true"/>
-            <forward name="successAdd" path="edit-news" redirect="true"/>
-            <forward name="successView" path="view-news"/>
+            <forward name="successList" path="news-list"/>
+            <forward name="redirectList" path="NewsAction.do?action=list" redirect="true"/>
+            <forward name="successAdd" path="edit-news"/>
+            <forward name="successView" path="view-news" redirect="true"/>
+            <forward name="redirectView" path="NewsAction.do?action=view" redirect="true"/>
             <forward name="successEdit" path="edit-news"/>
         </action>
         <action path="/locale"

@@ -47,11 +47,12 @@ public class NewsForm extends ActionForm {
     @Override
     public void reset(ActionMapping mapping, HttpServletRequest request) {
 //        // reset properties
-        this.news.setTitle("");
-        this.news.setCreatedAt(null);
-        this.news.setBrief("");
-        this.news.setContent("");
-
+//        if (news != null) {
+//            this.news.setTitle("");
+//            this.news.setCreatedAt(null);
+//            this.news.setBrief("");
+//            this.news.setContent("");
+//        }
     }
 
 }
