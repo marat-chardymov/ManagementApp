@@ -21,7 +21,7 @@
             <label class="in"><bean:message key="newsPage.date"/></label>
         </td>
         <td>
-            ${newsForm.news.createdAt}
+            <fmt:formatDate value="${newsForm.news.createdAt}" pattern="dd/MM/yyyy"/>
         </td>
     </tr>
     <tr>
