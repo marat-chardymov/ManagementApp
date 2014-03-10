@@ -16,10 +16,10 @@
 <table id="locale">
     <tr>
         <td>
-            <html:link page="/locale.do?loc=english">English</html:link>
+            <html:link page="/locale.do?loc=en">English</html:link>
         </td>
         <td>
-            <html:link page="/locale.do?loc=russian">Русский</html:link>
+            <html:link page="/locale.do?loc=ru">Русский</html:link>
         </td>
     </tr>
 </table>

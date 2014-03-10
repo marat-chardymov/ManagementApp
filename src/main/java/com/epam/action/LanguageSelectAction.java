@@ -17,9 +17,9 @@ public class LanguageSelectAction extends Action {
     public ActionForward execute(ActionMapping mapping, ActionForm form,
                                  HttpServletRequest request, HttpServletResponse response) {
         String loc = request.getParameter("loc");
-        if(loc.equals("russian")){
+        if(loc!=null){
             request.getSession().setAttribute(
-                    Globals.LOCALE_KEY, new Locale("ru"));
+                    Globals.LOCALE_KEY, new Locale(loc));
         }else{
             request.getSession().setAttribute(
                     Globals.LOCALE_KEY, Locale.ENGLISH);
