@@ -1,3 +1,3 @@
 $('#deleteBtn').on('click', function () {
-    confirm(viewNews.deleteConfirm)
+    return confirm(viewNews.deleteConfirm);
 });

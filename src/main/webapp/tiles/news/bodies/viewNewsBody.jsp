@@ -45,9 +45,9 @@
         </td>
         <td>
             <div id="buttons">
-                <html:link action="NewsAction.do?action=edit" styleClass="btnLink" style="text-decoration: none;">
+                <html:link action="NewsAction.do?action=edit" styleClass="btnLink">
                     <bean:message key="buttons.edit"/></html:link>
-                <html:link action="NewsAction.do?action=delete" styleClass="btnLink">
+                <html:link action="NewsAction.do?action=delete" styleClass="btnLink" styleId="deleteBtn">
                     <bean:message key="buttons.delete"/></html:link>
             </div>
         </td>

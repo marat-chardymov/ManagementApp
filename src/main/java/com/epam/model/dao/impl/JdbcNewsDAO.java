@@ -11,6 +11,12 @@ import java.util.List;
 
 public class JdbcNewsDAO extends AbstractDAO implements INewsDAO {
 
+    private static final String ID="id";
+    private static final String TITLE="title";
+    private static final String CREATED_AT="created_at";
+    private static final String BRIEF="brief";
+    private static final String CONTENT="content";
+
     private static final String SAVE_SQL = "INSERT INTO NEWS"
             + "(title,brief,content,created_at) VALUES"
             + "(?,?,?,?)";
@@ -60,10 +66,10 @@ public class JdbcNewsDAO extends AbstractDAO implements INewsDAO {
             ps.setInt(1, id);
             rs = ps.executeQuery();
             while (rs.next()) {
-                String title = rs.getString("title");
-                String brief = rs.getString("brief");
-                String content = rs.getString("content");
-                Date createdAt = rs.getDate("created_at");
+                String title = rs.getString(TITLE);
+                String brief = rs.getString(BRIEF);
+                String content = rs.getString(CONTENT);
+                Date createdAt = rs.getDate(CREATED_AT);
                 news = new News(title, brief, content, createdAt);
                 news.setId(id);
             }
@@ -153,11 +159,11 @@ public class JdbcNewsDAO extends AbstractDAO implements INewsDAO {
             st = connection.createStatement();
             rs = st.executeQuery(FIND_ALL_SQL);
             while (rs.next()) {
-                int id = rs.getInt("ID");
-                String title = rs.getString("title");
-                String brief = rs.getString("brief");
-                String content = rs.getString("content");
-                Date createdAt = rs.getDate("created_at");
+                int id = rs.getInt(ID);
+                String title = rs.getString(TITLE);
+                String brief = rs.getString(BRIEF);
+                String content = rs.getString(CONTENT);
+                Date createdAt = rs.getDate(CREATED_AT);
                 News news = new News(title, brief, content, createdAt);
                 news.setId(id);
                 newsList.add(news);
