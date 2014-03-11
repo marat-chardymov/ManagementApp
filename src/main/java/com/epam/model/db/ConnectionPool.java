@@ -12,7 +12,7 @@ import java.util.concurrent.LinkedBlockingDeque;
 import java.util.concurrent.LinkedBlockingQueue;
 import java.util.concurrent.TimeUnit;
 
-public class ConnectionPool {
+public final class ConnectionPool {
 
     static {
         Locale.setDefault(Locale.ENGLISH);

@@ -19,6 +19,12 @@ import java.util.List;
 public final class NewsAction extends DispatchAction {
 
     private INewsDAO newsDAO;
+    private static final String SUCCESS_LIST = "successList";
+    private static final String REDIRECT_LIST = "redirectList";
+    private static final String SUCCESS_ADD = "successAdd";
+    private static final String SUCCESS_EDIT = "successEdit";
+    private static final String REDIRECT_VIEW = "redirectView";
+    private static final String SUCCESS_VIEW = "successView";
 
     public void setNewsDAO(INewsDAO newsDAO) {
         this.newsDAO = newsDAO;
@@ -39,7 +45,7 @@ public final class NewsAction extends DispatchAction {
         }
         NewsForm newsForm = (NewsForm) form;
         newsForm.setNewsList(newsList);
-        return mapping.findForward("successList");
+        return mapping.findForward(SUCCESS_LIST);
     }
 
     public ActionForward deleteList(ActionMapping mapping, ActionForm form,
@@ -50,12 +56,10 @@ public final class NewsAction extends DispatchAction {
         List<News> newsList = null;
         try {
             newsDAO.deleteList(deleteIds);
-//            newsList = newsDAO.findAll();
         } catch (AppDAOException e) {
             throw new AppActionException("NewsAction exception on deleteList()", e);
         }
-//        newsForm.setNewsList(newsList);
-        return mapping.findForward("redirectList");
+        return mapping.findForward(REDIRECT_LIST);
     }
 
     public ActionForward delete(ActionMapping mapping, ActionForm form,
@@ -66,12 +70,10 @@ public final class NewsAction extends DispatchAction {
         List<News> newsList = null;
         try {
             newsDAO.delete(id);
-//            newsList = newsDAO.findAll();
         } catch (AppDAOException e) {
             throw new AppActionException("NewsAction exception on delete()", e);
         }
-//        newsForm.setNewsList(newsList);
-        return mapping.findForward("redirectList");
+        return mapping.findForward(REDIRECT_LIST);
     }
 
     public ActionForward add(ActionMapping mapping, ActionForm form,
@@ -82,7 +84,7 @@ public final class NewsAction extends DispatchAction {
         news.setCreatedAt(sqlDate);
         NewsForm newsForm = (NewsForm) form;
         newsForm.setNews(news);
-        return mapping.findForward("successAdd");
+        return mapping.findForward(SUCCESS_ADD);
     }
 
     public ActionForward edit(ActionMapping mapping, ActionForm form,
@@ -97,7 +99,7 @@ public final class NewsAction extends DispatchAction {
             throw new AppActionException("NewsAction exception on read()", e);
         }
         newsForm.setNews(news);
-        return mapping.findForward("successEdit");
+        return mapping.findForward(SUCCESS_EDIT);
     }
 
     public ActionForward save(ActionMapping mapping, ActionForm form,
@@ -106,14 +108,14 @@ public final class NewsAction extends DispatchAction {
         NewsForm newsForm = (NewsForm) form;
         News news = newsForm.getNews();
         //if id exists we update current news, else - add new
-        int newsId=news.getId();
-        if (newsId!=0) {
+        int newsId = news.getId();
+        if (newsId != 0) {
             try {
                 newsDAO.update(news);
             } catch (AppDAOException e) {
                 throw new AppActionException("NewsAction exception on save()", e);
             }
-            return mapping.findForward("redirectView");
+            return mapping.findForward(REDIRECT_VIEW);
         } else {
             try {
                 newsDAO.save(news);
@@ -121,7 +123,7 @@ public final class NewsAction extends DispatchAction {
                 throw new AppActionException("NewsAction exception on save()", e);
             }
             newsForm.getNews().setId(news.getId());
-            return mapping.findForward("redirectView");
+            return mapping.findForward(REDIRECT_VIEW);
         }
     }
 
@@ -131,14 +133,13 @@ public final class NewsAction extends DispatchAction {
         NewsForm newsForm = (NewsForm) form;
         int id = newsForm.getNews().getId();
         News news = null;
-        //TODO: rewrite
         try {
             news = newsDAO.read(id);
         } catch (AppDAOException e) {
             throw new AppActionException("NewsAction exception on view()", e);
         }
         newsForm.setNews(news);
-        return mapping.findForward("successView");
+        return mapping.findForward(SUCCESS_VIEW);
     }
 
 }

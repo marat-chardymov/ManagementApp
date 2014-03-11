@@ -22,24 +22,32 @@ label.in {
     text-align: left;
 }
 
-​.inputField{
+​.inputField {
     display: inline;
 }
-label.error{
+
+label.error {
     display: inline;
     margin-left: 10px;
     vertical-align: top;
 }
 
-#briefLabel{
+#briefLabel {
     vertical-align: top;
 }
-#contentLabel{
+
+#contentLabel {
     vertical-align: top;
 }
-#buttons{
+
+#buttons {
     margin-left: 130px;
 }
-textarea{
+
+textarea {
     width: 380px;
+}
+
+input#title {
+    width: 360px;
 }
