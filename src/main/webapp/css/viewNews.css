@@ -10,16 +10,19 @@
 .contentLine {
     display: inline;
 }
+
 label.in {
     display: inline-block;
-    width: 80px;
     text-align: left;
     vertical-align: top;
+    width: 130px;
+    color: grey;
 }
-table#view{
+
+table#view {
     table-layout: fixed;
     word-break: break-all;
-    padding: 100px;
+    padding: 60px;
     padding-top: 50px;
 }
 
@@ -27,7 +30,8 @@ td {
     padding-top: .5em;
     padding-bottom: .5em;
 }
-.btnLink{
+
+.btnLink {
     border-radius: 3px;
     border: 2px solid #6495ED;
     background-color: #ffffff;
@@ -35,4 +39,5 @@ td {
     text-decoration: none;
     color: black;
 }
+
 ​

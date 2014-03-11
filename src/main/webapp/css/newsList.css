@@ -1,31 +1,39 @@
-.date{
-  float:right;
-    padding-right: 100px;
+.date {
+    float: right;
+    padding-right: 60px;
+    text-decoration: underline;
 }
-h2{
+
+h2 {
     display: inline;
 }
-h2.title{
+
+h2.title {
     width: 85%;
 }
-.RUDbuttons{
+
+.RUDbuttons {
     float: right;
-    padding-right: 100px;
-}
-.newsBlock{
-    padding-left: 60px;
     padding-right: 60px;
+}
+
+.newsBlock {
+    padding-left: 60px;
     padding-top: 60px;
     margin-bottom: 80px;
     word-break: break-all;
 }
-#deleteBtn{
+
+#deleteBtn {
     float: right;
-    margin-right: 160px;
+    margin-right: 60px;
 }
-.brief{
-    width:75%;
+
+.brief {
+    width: 75%;
 }
-.listBtn{
+
+a.listBtn {
     margin-right: 10px;
+    text-decoration: none;
 }
