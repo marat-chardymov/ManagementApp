@@ -29,11 +29,11 @@
 
             <div class="RUDbuttons">
                 <bean:define id="id" property="news.id" value="${news.id}"/>
-                <html:link action="NewsAction.do?action=view" paramId="news.id"
+                <html:link action="NewsAction.do?action=view" paramId="news.id" styleClass="listBtn"
                            paramName="id">
                     <bean:message key="links.view"/>
                 </html:link>
-                <html:link action="NewsAction.do?action=edit" paramId="news.id"
+                <html:link action="NewsAction.do?action=edit" paramId="news.id" styleClass="listBtn"
                            paramName="id">
                     <bean:message key="links.edit"/>
                 </html:link>
