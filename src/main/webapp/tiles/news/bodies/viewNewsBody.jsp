@@ -45,9 +45,12 @@
         </td>
         <td>
             <div id="buttons">
-                <html:link action="NewsAction.do?action=edit" styleClass="btnLink">
+                <bean:define id="id" property="news.id" value="${newsForm.news.id}"/>
+                <html:link action="NewsAction.do?action=edit" styleClass="btnLink" paramId="news.id"
+                           paramName="id">
                     <bean:message key="buttons.edit"/></html:link>
-                <html:link action="NewsAction.do?action=delete" styleClass="btnLink" styleId="deleteBtn">
+                <html:link action="NewsAction.do?action=delete" styleClass="btnLink" styleId="deleteBtn" paramId="news.id"
+                           paramName="id">
                     <bean:message key="buttons.delete"/></html:link>
             </div>
         </td>

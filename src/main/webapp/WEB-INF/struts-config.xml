@@ -28,9 +28,9 @@
             <forward name="redirectView" path="NewsAction.do?action=view" redirect="true"/>
             <forward name="successEdit" path="edit-news"/>
         </action>
-        <action path="/locale"
+        <action path="/locale" 
                 type="org.springframework.web.struts.DelegatingActionProxy"
-                parameter="loc">
+                parameter="loc" name="newsForm" >
         </action>
     </action-mappings>
 
