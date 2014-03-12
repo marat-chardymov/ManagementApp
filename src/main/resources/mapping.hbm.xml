@@ -10,7 +10,10 @@
             </generator>
         </id>
         <union-subclass name="com.epam.model.entities.News" table="NEWS">
-
+            <property name="title" type="string"/>
+            <property name="brief" type="string"/>
+            <property name="content" type="string"/>
+            <property name="createdAt" type="java.sql.Date"/>
         </union-subclass>
     </class>
 </hibernate-mapping>
