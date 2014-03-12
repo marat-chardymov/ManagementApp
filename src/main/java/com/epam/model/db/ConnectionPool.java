@@ -1,16 +1,14 @@
 package com.epam.model.db;
 
 import com.epam.exceptions.AppConnectionException;
-import org.apache.log4j.Level;
-import org.apache.log4j.Logger;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.SQLException;
-import java.util.*;
-import java.util.concurrent.LinkedBlockingDeque;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Locale;
 import java.util.concurrent.LinkedBlockingQueue;
-import java.util.concurrent.TimeUnit;
 
 public final class ConnectionPool {
 

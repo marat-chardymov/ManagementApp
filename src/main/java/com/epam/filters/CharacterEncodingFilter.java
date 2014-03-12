@@ -2,7 +2,6 @@ package com.epam.filters;
 
 import javax.servlet.*;
 import java.io.IOException;
-import java.io.UnsupportedEncodingException;
 
 /**
  * Created by Marat_Chardymau on 2/20/14.

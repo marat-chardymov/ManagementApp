@@ -12,9 +12,7 @@ import org.springframework.dao.EmptyResultDataAccessException;
 
 import java.util.List;
 
-import static junit.framework.Assert.assertEquals;
 import static junit.framework.Assert.assertNotNull;
-import static org.junit.Assert.assertNull;
 
 public class NewsDAOTest {
     private static BeanFactory beanFactory = null;

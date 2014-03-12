@@ -1,4 +1,3 @@
-<%@ page import="java.util.Locale" %>
 <%@ include file="/tiles/libs.jsp" %>
 
 <link href="${pageContext.request.contextPath}/css/viewNews.css" rel="stylesheet">

@@ -4,6 +4,33 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans
     http://www.springframework.org/schema/beans/spring-beans-4.0.xsd">
 
+    <bean id="dataSource"
+          class="org.springframework.jdbc.datasource.DriverManagerDataSource">
+        <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver" />
+        <property name="url" value="jdbc:oracle:thin:@localhost:1521:xe" />
+        <property name="username" value="system" />
+        <property name="password" value="sesame" />
+    </bean>
+    <bean id="txManager" class="org.springframework.orm.hibernate4.HibernateTransactionManager">
+        <property name="dataSource" ref="dataSource"/>
+    </bean>
+    <!-- Configure Hibernate 4 Session Facotry -->
+    <bean id="sessionFactory" class="org.springframework.orm.hibernate4.LocalSessionFactoryBean">
+        <property name="dataSource" ref="dataSource" />
+        <property name="mappingResources">
+            <list>
+                <value>mapping.hbm.xml</value>
+            </list>
+        </property>
+        <property name="hibernateProperties">
+            <props>
+                <prop key="hibernate.dialect">org.hibernate.dialect.Oracle10gDialect</prop>
+                <prop key="hibernate.show_sql">true</prop>
+            </props>
+        </property>
+    </bean>
+
+    <!-- custom connection pool and JDBC DAO -->
     <bean id="pool" class="com.epam.model.db.ConnectionPool" init-method="init" destroy-method="destroy">
         <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>
         <property name="jdbcUrl" value="jdbc:oracle:thin:@localhost:1521:xe"/>
@@ -11,11 +38,9 @@
         <property name="password" value="sesame"/>
         <property name="initPoolSize" value="5"/>
     </bean>
-
     <bean id="newsDAO" class="com.epam.model.dao.impl.JdbcNewsDAO">
         <property name="pool" ref="pool"/>
     </bean>
-
 
 
     <!-- Struts action beans -->

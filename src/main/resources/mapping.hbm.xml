@@ -1,0 +1,16 @@
+<?xml version="1.0"?>
+<!DOCTYPE hibernate-mapping PUBLIC "-//Hibernate/Hibernate Mapping DTD 3.0//EN"
+        "http://hibernate.sourceforge.net/hibernate-mapping-3.0.dtd">
+<hibernate-mapping>
+    <class name="com.epam.model.entities.AbstractEntity" abstract="true">
+        <id name="id" type="int">
+            <column name="ID" />
+            <generator class="sequence-identity" >
+                <param name="sequence">NEWS_SEQ</param>
+            </generator>
+        </id>
+        <union-subclass name="com.epam.model.entities.News" table="NEWS">
+
+        </union-subclass>
+    </class>
+</hibernate-mapping>

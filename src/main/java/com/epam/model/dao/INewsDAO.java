@@ -3,8 +3,6 @@ package com.epam.model.dao;
 import com.epam.exceptions.AppDAOException;
 import com.epam.model.entities.News;
 
-import javax.sql.DataSource;
-import java.sql.SQLException;
 import java.util.List;
 
 /**
