@@ -24,12 +24,23 @@ public class asdf {
 //        newsDAO.save(news);
 
 //        check read
-        java.util.Date today = new java.util.Date();
-        News news = new News("111", "222", "333",new Date(today.getTime()));
-        INewsDAO newsDAO = (INewsDAO) ctx.getBean("hibernateNewsDAO");
-        newsDAO.save(news);
-        News readedNews=newsDAO.read(news.getId());
-        System.out.println("tadam");
+//        java.util.Date today = new java.util.Date();
+//        News news = new News("111", "222", "333",new Date(today.getTime()));
+//        INewsDAO newsDAO = (INewsDAO) ctx.getBean("hibernateNewsDAO");
+//        newsDAO.save(news);
+//        News readedNews=newsDAO.read(news.getId());
+//        System.out.println("tadam");
+
+//        check update
+//        java.util.Date today = new java.util.Date();
+//        News news = new News("222", "333", "444",new Date(today.getTime()));
+//        INewsDAO newsDAO = (INewsDAO) ctx.getBean("hibernateNewsDAO");
+//        newsDAO.save(news);
+//        news.setTitle("2222");
+//        news.setBrief("3333");
+//        news.setContent("4444");
+//        newsDAO.update(news);
+//        System.out.println("tadam");
     }
 
 }

@@ -40,7 +40,8 @@ public class HibernateNewsDAO implements INewsDAO {
 
     @Override
     public void update(News news) throws AppDAOException {
-
+        Session session = sessionFactory.getCurrentSession();
+        session.merge(news);
     }
 
     @Override
