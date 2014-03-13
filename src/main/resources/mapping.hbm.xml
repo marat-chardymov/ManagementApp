@@ -5,7 +5,7 @@
     <class name="com.epam.model.entities.AbstractEntity" abstract="true">
         <id name="id" type="int">
             <column name="ID" />
-            <generator class="sequence-identity" >
+            <generator class="sequence">
                 <param name="sequence">NEWS_SEQ</param>
             </generator>
         </id>
@@ -13,7 +13,7 @@
             <property name="title" type="string"/>
             <property name="brief" type="string"/>
             <property name="content" type="string"/>
-            <property name="createdAt" type="java.sql.Date"/>
+            <property name="createdAt" type="java.sql.Date" column="CREATED_AT"/>
         </union-subclass>
     </class>
 </hibernate-mapping>
