@@ -3,12 +3,15 @@ package com.epam.model.dao.impl;
 import com.epam.exceptions.AppDAOException;
 import com.epam.model.dao.INewsDAO;
 import com.epam.model.entities.News;
+import com.google.common.primitives.Ints;
 import org.hibernate.Session;
 import org.hibernate.cfg.Configuration;
 import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.sql.Date;
+import java.util.Arrays;
+import java.util.Collection;
 import java.util.List;
 
 /**
@@ -50,6 +53,10 @@ public class asdf {
         //check findAll
 //        List<News> newsList = newsDAO.findAll();
 //        System.out.println("tadam");
+
+        //check delete list
+//        int ids[] = {681, 682};
+//        newsDAO.deleteList(ids);
     }
 
 }

@@ -125,6 +125,12 @@
             <version>4.3.4.Final</version>
         </dependency>
 
+        <!-- guava util library -->
+        <dependency>
+            <groupId>com.google.guava</groupId>
+            <artifactId>guava</artifactId>
+            <version>16.0.1</version>
+        </dependency>
 
 		<!-- logging -->
 		<dependency>

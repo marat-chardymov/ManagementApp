@@ -3,6 +3,7 @@ package com.epam.model.dao.impl;
 import com.epam.exceptions.AppDAOException;
 import com.epam.model.dao.INewsDAO;
 import com.epam.model.entities.News;
+import com.google.common.primitives.Ints;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
@@ -10,6 +11,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
 import javax.transaction.Transactional;
+import java.util.Arrays;
 import java.util.List;
 
 @Repository
@@ -17,6 +19,7 @@ import java.util.List;
 public class HibernateNewsDAO implements INewsDAO {
 
     private static final String HQL_DELETE = "delete from News where id= :id";
+    private static final String HQL_DELETE_LIST = "delete News where id in (:idList)";
 
     @Resource
     private SessionFactory sessionFactory;
@@ -51,13 +54,17 @@ public class HibernateNewsDAO implements INewsDAO {
     public void delete(int id) throws AppDAOException {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery(HQL_DELETE);
-        query.setInteger("id",id);
+        query.setInteger("id", id);
         query.executeUpdate();
     }
 
     @Override
     public void deleteList(int[] ids) throws AppDAOException {
-
+        Session session = sessionFactory.getCurrentSession();
+        Query query = session.createQuery(HQL_DELETE_LIST);
+        List<Integer> idList=Ints.asList(ids);
+        query.setParameterList("idList", idList);
+        query.executeUpdate();
     }
 
     @Override
