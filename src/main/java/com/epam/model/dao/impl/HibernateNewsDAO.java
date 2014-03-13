@@ -62,6 +62,7 @@ public class HibernateNewsDAO implements INewsDAO {
 
     @Override
     public List<News> findAll() throws AppDAOException {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        return session.createCriteria(News.class).list();
     }
 }

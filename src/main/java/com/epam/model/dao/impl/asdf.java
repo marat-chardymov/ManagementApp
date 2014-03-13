@@ -9,6 +9,7 @@ import org.springframework.context.ApplicationContext;
 import org.springframework.context.support.ClassPathXmlApplicationContext;
 
 import java.sql.Date;
+import java.util.List;
 
 /**
  * Created by Marat_Chardymau on 3/12/14.
@@ -41,10 +42,14 @@ public class asdf {
 //        System.out.println("tadam");
 
         //check delete
-        java.util.Date today = new java.util.Date();
-        News news = new News("deleteTest", "deleteTest", "deleteTest",new Date(today.getTime()));
-        newsDAO.save(news);
-        newsDAO.delete(news.getId());
+//        java.util.Date today = new java.util.Date();
+//        News news = new News("deleteTest", "deleteTest", "deleteTest",new Date(today.getTime()));
+//        newsDAO.save(news);
+//        newsDAO.delete(news.getId());
+
+        //check findAll
+//        List<News> newsList = newsDAO.findAll();
+//        System.out.println("tadam");
     }
 
 }
