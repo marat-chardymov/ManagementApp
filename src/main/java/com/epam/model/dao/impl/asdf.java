@@ -16,9 +16,20 @@ import java.sql.Date;
 public class asdf {
     public static void main(String[] args) throws AppDAOException {
         ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[]{"application-context.xml"});
+
+//        check save
+//        java.util.Date today = new java.util.Date();
+//        News news = new News("888", "777", "666",new Date(today.getTime()));
+//        INewsDAO newsDAO = (INewsDAO) ctx.getBean("hibernateNewsDAO");
+//        newsDAO.save(news);
+
+//        check read
         java.util.Date today = new java.util.Date();
-        News news = new News("888", "777", "666",new Date(today.getTime()));
+        News news = new News("111", "222", "333",new Date(today.getTime()));
         INewsDAO newsDAO = (INewsDAO) ctx.getBean("hibernateNewsDAO");
         newsDAO.save(news);
+        News readedNews=newsDAO.read(news.getId());
+        System.out.println("tadam");
     }
+
 }

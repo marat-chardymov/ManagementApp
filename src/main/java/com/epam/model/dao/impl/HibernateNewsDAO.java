@@ -3,6 +3,7 @@ package com.epam.model.dao.impl;
 import com.epam.exceptions.AppDAOException;
 import com.epam.model.dao.INewsDAO;
 import com.epam.model.entities.News;
+import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.stereotype.Repository;
 
@@ -12,7 +13,7 @@ import java.util.List;
 
 @Repository
 @Transactional
-public class HibernateNewsDAO implements INewsDAO{
+public class HibernateNewsDAO implements INewsDAO {
 
     @Resource
     private SessionFactory sessionFactory;
@@ -27,13 +28,14 @@ public class HibernateNewsDAO implements INewsDAO{
 
     @Override
     public void save(News news) throws AppDAOException {
-        Object asdf=sessionFactory.getCurrentSession().save(news);
-        System.out.println("asdf");
+        Session session = sessionFactory.getCurrentSession();
+        session.save(news);
     }
 
     @Override
     public News read(int id) throws AppDAOException {
-        return null;
+        Session session = sessionFactory.getCurrentSession();
+        return (News) session.get(News.class, new Integer(id));
     }
 
     @Override
