@@ -8,32 +8,39 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.EntityManager;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceContext;
+import javax.persistence.TypedQuery;
+import javax.persistence.criteria.CriteriaBuilder;
+import javax.transaction.Transactional;
 import java.util.List;
 
-
+@Repository
+@Transactional
 public class JPANewsDAO implements INewsDAO{
+
+    private static final String FIND_All_SQL="SELECT n FROM News n";
+    private static final String FIND_All_SQL="DELETE n FROM News n";
 
     @PersistenceContext
     private EntityManager em;
 
     @Override
     public void save(News news) throws AppDAOException {
-
+        em.persist(news);
     }
 
     @Override
     public News read(int id) throws AppDAOException {
-        return null;
+        return em.find(News.class,id);
     }
 
     @Override
     public void update(News news) throws AppDAOException {
-
+        em.merge(news);
     }
 
     @Override
     public void delete(int id) throws AppDAOException {
-
+      
     }
 
     @Override
@@ -43,6 +50,6 @@ public class JPANewsDAO implements INewsDAO{
 
     @Override
     public List<News> findAll() throws AppDAOException {
-        return null;
+        return em.createQuery(FIND_All_SQL).getResultList();
     }
 }
