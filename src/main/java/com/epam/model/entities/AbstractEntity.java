@@ -7,7 +7,7 @@ import javax.persistence.Id;
 @Entity
 public class AbstractEntity {
 	@Id
-	@GeneratedValue
+	@GeneratedValue(generator = "NEWS_SEQ")
     private int id;
 
     public int getId() {

@@ -3,10 +3,18 @@ package com.epam.model.dao.impl;
 import com.epam.exceptions.AppDAOException;
 import com.epam.model.dao.INewsDAO;
 import com.epam.model.entities.News;
+import org.springframework.stereotype.Repository;
 
+import javax.persistence.EntityManager;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceContext;
 import java.util.List;
 
+
 public class JPANewsDAO implements INewsDAO{
+
+    @PersistenceContext
+    private EntityManager em;
 
     @Override
     public void save(News news) throws AppDAOException {

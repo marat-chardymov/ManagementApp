@@ -33,25 +33,25 @@ public class HibernateNewsDAO implements INewsDAO {
     }
 
     @Override
-    public void save(News news) throws AppDAOException {
+    public void save(News news) {
         Session session = sessionFactory.getCurrentSession();
         session.save(news);
     }
 
     @Override
-    public News read(int id) throws AppDAOException {
+    public News read(int id) {
         Session session = sessionFactory.getCurrentSession();
         return (News) session.get(News.class, new Integer(id));
     }
 
     @Override
-    public void update(News news) throws AppDAOException {
+    public void update(News news) {
         Session session = sessionFactory.getCurrentSession();
         session.merge(news);
     }
 
     @Override
-    public void delete(int id) throws AppDAOException {
+    public void delete(int id) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery(HQL_DELETE);
         query.setInteger("id", id);
@@ -59,7 +59,7 @@ public class HibernateNewsDAO implements INewsDAO {
     }
 
     @Override
-    public void deleteList(int[] ids) throws AppDAOException {
+    public void deleteList(int[] ids) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery(HQL_DELETE_LIST);
         List<Integer> idList=Ints.asList(ids);
@@ -68,7 +68,7 @@ public class HibernateNewsDAO implements INewsDAO {
     }
 
     @Override
-    public List<News> findAll() throws AppDAOException {
+    public List<News> findAll() {
         Session session = sessionFactory.getCurrentSession();
         return session.createCriteria(News.class).list();
     }

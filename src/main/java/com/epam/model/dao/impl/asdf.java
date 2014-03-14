@@ -20,12 +20,12 @@ import java.util.List;
 public class asdf {
     public static void main(String[] args) throws AppDAOException {
         ApplicationContext ctx = new ClassPathXmlApplicationContext(new String[]{"application-context.xml"});
-        INewsDAO newsDAO = (INewsDAO) ctx.getBean("hibernateNewsDAO");
+        INewsDAO newsDAO = (INewsDAO) ctx.getBean("JPANewsDAO");
 
 //        check save
-//        java.util.Date today = new java.util.Date();
-//        News news = new News("888", "777", "666",new Date(today.getTime()));
-//        newsDAO.save(news);
+        java.util.Date today = new java.util.Date();
+        News news = new News("888", "777", "666",new Date(today.getTime()));
+        newsDAO.save(news);
 
 //        check read
 //        java.util.Date today = new java.util.Date();
