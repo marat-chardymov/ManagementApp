@@ -78,6 +78,7 @@
     <!-- bean post-processor for JPA annotations -->
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
 
+
     <!-- custom connection pool and JDBC DAO -->
     <bean id="pool" class="com.epam.model.db.ConnectionPool" init-method="init" destroy-method="destroy">
         <property name="driverClassName" value="oracle.jdbc.driver.OracleDriver"/>

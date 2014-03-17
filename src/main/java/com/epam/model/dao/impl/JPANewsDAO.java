@@ -8,6 +8,7 @@ import org.springframework.stereotype.Repository;
 
 import javax.persistence.*;
 import javax.persistence.criteria.CriteriaBuilder;
+import javax.persistence.criteria.CriteriaQuery;
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -15,7 +16,7 @@ import java.util.List;
 @Transactional
 public class JPANewsDAO implements INewsDAO {
 
-    private static final String FIND_All = "SELECT n FROM News n";
+    private static final String FIND_All = "SELECT n FROM News n ORDER BY n.createdAt DESC";
     private static final String DELETE = "DELETE FROM News news WHERE news.id= :id";
     private static final String DELETE_LIST = "DELETE News news WHERE news.id IN (:idList)";
 
@@ -23,29 +24,29 @@ public class JPANewsDAO implements INewsDAO {
     private EntityManager em;
 
     @Override
-    public void save(News news) throws AppDAOException {
+    public void save(News news) {
         em.persist(news);
     }
 
     @Override
-    public News read(int id) throws AppDAOException {
+    public News read(int id) {
         return em.find(News.class, id);
     }
 
     @Override
-    public void update(News news) throws AppDAOException {
+    public void update(News news) {
         em.merge(news);
     }
 
     @Override
-    public void delete(int id) throws AppDAOException {
+    public void delete(int id) {
         Query query = em.createQuery(DELETE);
         query.setParameter("id", id);
         query.executeUpdate();
     }
 
     @Override
-    public void deleteList(int[] ids) throws AppDAOException {
+    public void deleteList(int[] ids) {
         Query query = em.createQuery(DELETE_LIST);
         List<Integer> idList = Ints.asList(ids);
         query.setParameter("idList", idList);
@@ -53,7 +54,7 @@ public class JPANewsDAO implements INewsDAO {
     }
 
     @Override
-    public List<News> findAll() throws AppDAOException {
+    public List<News> findAll() {
         return em.createQuery(FIND_All).getResultList();
     }
 }

@@ -4,9 +4,11 @@ import com.epam.exceptions.AppDAOException;
 import com.epam.model.dao.INewsDAO;
 import com.epam.model.entities.News;
 import com.google.common.primitives.Ints;
+import org.hibernate.Criteria;
 import org.hibernate.Query;
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
+import org.hibernate.criterion.Order;
 import org.springframework.stereotype.Repository;
 
 import javax.annotation.Resource;
@@ -62,7 +64,7 @@ public class HibernateNewsDAO implements INewsDAO {
     public void deleteList(int[] ids) {
         Session session = sessionFactory.getCurrentSession();
         Query query = session.createQuery(HQL_DELETE_LIST);
-        List<Integer> idList=Ints.asList(ids);
+        List<Integer> idList = Ints.asList(ids);
         query.setParameterList("idList", idList);
         query.executeUpdate();
     }
@@ -70,6 +72,8 @@ public class HibernateNewsDAO implements INewsDAO {
     @Override
     public List<News> findAll() {
         Session session = sessionFactory.getCurrentSession();
-        return session.createCriteria(News.class).list();
+        Criteria criteria = session.createCriteria(News.class);
+        criteria.addOrder(Order.desc("createdAt"));
+        return criteria.list();
     }
 }
