@@ -1,9 +1,8 @@
 package com.epam.model.entities;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Table;
+import javax.persistence.*;
 import java.sql.Date;
+
 
 @Entity
 @Table(name = "NEWS")
@@ -15,7 +14,7 @@ public class News extends AbstractEntity {
 	private String title;
 	@Column
 	private String brief;
-	@Column
+	@Column(name = "CREATED_AT")
 	private Date createdAt;
 
 	public News() {

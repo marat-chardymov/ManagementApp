@@ -16,10 +16,6 @@ import java.util.List;
 @Transactional
 public class JPANewsDAO implements INewsDAO {
 
-    private static final String FIND_All = "SELECT n FROM News n ORDER BY n.createdAt DESC";
-    private static final String DELETE = "DELETE FROM News news WHERE news.id= :id";
-    private static final String DELETE_LIST = "DELETE News news WHERE news.id IN (:idList)";
-
     @PersistenceContext
     private EntityManager em;
 
@@ -40,14 +36,14 @@ public class JPANewsDAO implements INewsDAO {
 
     @Override
     public void delete(int id) {
-        Query query = em.createQuery(DELETE);
+        Query query = em.createNamedQuery("DELETE");
         query.setParameter("id", id);
         query.executeUpdate();
     }
 
     @Override
     public void deleteList(int[] ids) {
-        Query query = em.createQuery(DELETE_LIST);
+        Query query = em.createNamedQuery("DELETE_LIST");
         List<Integer> idList = Ints.asList(ids);
         query.setParameter("idList", idList);
         query.executeUpdate();
@@ -55,6 +51,7 @@ public class JPANewsDAO implements INewsDAO {
 
     @Override
     public List<News> findAll() {
-        return em.createQuery(FIND_All).getResultList();
+        Query query = em.createNamedQuery("FIND_ALL");
+        return query.getResultList();
     }
 }

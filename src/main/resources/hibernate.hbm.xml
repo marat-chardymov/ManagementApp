@@ -16,4 +16,13 @@
             <property name="createdAt" type="java.sql.Date" column="CREATED_AT"/>
         </union-subclass>
     </class>
+    <query name="DELETE">
+        <![CDATA[DELETE FROM News news WHERE news.id= :id]]>
+    </query>
+    <query name="DELETE_LIST">
+        <![CDATA[DELETE News news WHERE news.id IN (:idList)]]>
+    </query>
+    <query name="FIND_ALL">
+        <![CDATA[SELECT n FROM News n ORDER BY n.createdAt DESC]]>
+    </query>
 </hibernate-mapping>

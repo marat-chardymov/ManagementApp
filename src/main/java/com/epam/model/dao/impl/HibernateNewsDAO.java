@@ -20,9 +20,6 @@ import java.util.List;
 @Transactional
 public class HibernateNewsDAO implements INewsDAO {
 
-    private static final String HQL_DELETE = "delete from News where id= :id";
-    private static final String HQL_DELETE_LIST = "delete News where id in (:idList)";
-
     @Resource
     private SessionFactory sessionFactory;
 
@@ -55,7 +52,7 @@ public class HibernateNewsDAO implements INewsDAO {
     @Override
     public void delete(int id) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery(HQL_DELETE);
+        Query query = session.getNamedQuery("DELETE");
         query.setInteger("id", id);
         query.executeUpdate();
     }
@@ -63,7 +60,7 @@ public class HibernateNewsDAO implements INewsDAO {
     @Override
     public void deleteList(int[] ids) {
         Session session = sessionFactory.getCurrentSession();
-        Query query = session.createQuery(HQL_DELETE_LIST);
+        Query query = session.getNamedQuery("DELETE_LIST");
         List<Integer> idList = Ints.asList(ids);
         query.setParameterList("idList", idList);
         query.executeUpdate();

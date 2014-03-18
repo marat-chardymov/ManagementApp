@@ -1,13 +1,13 @@
 package com.epam.model.entities;
 
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 @Entity
+@Inheritance(strategy= InheritanceType.TABLE_PER_CLASS)
 public class AbstractEntity {
 	@Id
-	@GeneratedValue(generator = "NEWS_SEQ")
+    @SequenceGenerator(name="NEWS_SEQ", sequenceName="NEWS_SEQ", allocationSize=1)
+    @GeneratedValue(strategy = GenerationType.SEQUENCE, generator = "NEWS_SEQ")
     private int id;
 
     public int getId() {

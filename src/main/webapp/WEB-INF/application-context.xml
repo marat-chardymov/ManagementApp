@@ -13,7 +13,7 @@
 
     <context:component-scan base-package="com.epam.model.dao.impl"></context:component-scan>
     <context:component-scan base-package="com.epam.model.entities"></context:component-scan>
-
+    <context:annotation-config/>
     <!-- DataSource -->
     <bean id="dataSource"
           class="org.springframework.jdbc.datasource.DriverManagerDataSource">
@@ -29,6 +29,7 @@
         <property name="jpaVendorAdapter" ref="jpaVendorAdapter">
         </property>
         <property name="packagesToScan" value="com.epam.model.entities"/>
+
         <property name="jpaProperties">
             <props>
                 <prop key="hibernate.format_sql">true</prop>
@@ -52,7 +53,7 @@
         <property name="dataSource" ref="dataSource"/>
         <property name="mappingResources">
             <list>
-                <value>mapping.hbm.xml</value>
+                <value>hibernate.hbm.xml</value>
             </list>
         </property>
         <property name="hibernateProperties">
@@ -77,6 +78,7 @@
           class="org.springframework.dao.annotation.PersistenceExceptionTranslationPostProcessor"/>
     <!-- bean post-processor for JPA annotations -->
     <bean class="org.springframework.orm.jpa.support.PersistenceAnnotationBeanPostProcessor"/>
+
 
 
     <!-- custom connection pool and JDBC DAO -->
